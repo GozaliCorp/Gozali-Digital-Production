@@ -1,10 +1,10 @@
 [
   {
-    "nama": "Mahir Bikin Konten Viral",
+    "nama": "Mahir Prompt AI untuk Pemula",
     "kat": "Ebook",
     "harga": "Rp 49rb",
     "coret": "Rp 99rb",
-    "desk": "Panduan lengkap bikin konten yang nempel di Instagram, TikTok, X, dan Facebook.",
+    "desk": "Panduan menyusun prompt efektif untuk ChatGPT & AI lain, dari nol.",
     "img": ""
   },
   {
@@ -12,23 +12,23 @@
     "kat": "Jasa",
     "harga": "Rp 1,5jt",
     "coret": "",
-    "desk": "Konten siap tayang sebulan penuh: desain, video reels, caption, dan jadwal posting.",
+    "desk": "Konten sebulan penuh: desain, reels, caption, dan jadwal posting.",
     "img": ""
   },
   {
     "nama": "AI Agent Auto-Reply WhatsApp",
     "kat": "AI",
-    "harga": "Rp 1,5 rb",
+    "harga": "Rp 750rb",
     "coret": "",
-    "desk": "Chatbot AI yang membalas pesan pelanggan otomatis 24/7, lengkap dengan setup.",
+    "desk": "Chatbot AI yang membalas pesan pelanggan otomatis 24/7 + setup.",
     "img": ""
   },
   {
-    "nama": "Template & Preset Editing Reels",
+    "nama": "Bundle Template & Preset Konten",
     "kat": "Digital",
     "harga": "Rp 79rb",
     "coret": "Rp 149rb",
-    "desk": "Kumpulan template dan preset siap pakai untuk edit reels lebih cepat dan rapi.",
+    "desk": "Template dan preset siap pakai untuk konten lebih cepat & rapi.",
     "img": ""
   }
 ]
