@@ -107,6 +107,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--gold-2); outline-
     <div class="tabs">
       <button class="tab active" data-tab="produk" type="button">🛍 Produk</button>
       <button class="tab" data-tab="berita" type="button">📰 Berita</button>
+      <button class="tab" data-tab="edukasi" type="button">🎓 Edukasi</button>
     </div>
   </div>
 
@@ -176,6 +177,39 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--gold-2); outline-
           <p class="note">Terbit: <b>Download news.json</b> → GitHub → ganti file lama → commit. Berita paling atas jadi <b>sorotan utama</b> di hero.</p>
           <div class="bar__act"><button class="btn btn--gold btn--sm" id="n_download" type="button">⬇ Download news.json</button><button class="btn btn--ghost btn--sm" id="n_copy" type="button">Salin JSON</button></div>
           <details><summary>Lihat isi news.json</summary><textarea class="json" id="n_json" readonly></textarea></details>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ================= PANEL EDUKASI ================= -->
+  <div class="panel" id="panel-edukasi">
+    <div class="grid">
+      <div class="card form-sticky">
+        <div class="card__pad">
+          <h2 id="e_title">Tambah materi edukasi</h2>
+          <p class="sub" id="e_sub">Isi detail lalu klik “Tambah”.</p>
+          <div class="field"><label for="e_judul">Judul materi *</label><input id="e_judul" type="text" placeholder="cth: Dasar-dasar AI untuk Pemula"></div>
+          <div class="row">
+            <div class="field"><label for="e_level">Level</label><select id="e_level"><option>Pemula</option><option>Menengah</option><option>Lanjut</option></select></div>
+            <div class="field"><label for="e_durasi">Durasi</label><input id="e_durasi" type="text" placeholder="45 mnt"></div>
+          </div>
+          <div class="field"><label for="e_ring">Ringkasan</label><textarea id="e_ring" placeholder="Ringkasan singkat materi…"></textarea></div>
+          <div class="field"><label for="e_link">Link (opsional)</label><input id="e_link" type="text" placeholder="https://…"></div>
+          <div class="field"><label>Gambar sampul</label>
+            <div class="uploader"><div class="uploader__prev" id="e_prev"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></div>
+              <div><label class="uploader__btn" for="e_img">Unggah gambar</label><input id="e_img" type="file" accept="image/*" hidden><small>Opsional. Kosong = warna level.</small></div></div>
+          </div>
+          <div class="form-act"><button class="btn btn--orange" id="e_save" type="button">Tambah</button><button class="btn btn--ghost" id="e_cancel" type="button" style="display:none">Batal edit</button><span class="msg" id="e_msg"></span></div>
+        </div>
+      </div>
+      <div class="card"><div class="card__pad">
+        <div class="list-head"><h2>Daftar materi</h2><span class="count" id="e_count">0</span></div>
+        <div id="e_list"></div>
+        <div class="export">
+          <p class="note">Terbit: <b>Download edukasi.json</b> → GitHub → ganti file lama → commit.</p>
+          <div class="bar__act"><button class="btn btn--gold btn--sm" id="e_download" type="button">⬇ Download edukasi.json</button><button class="btn btn--ghost btn--sm" id="e_copy" type="button">Salin JSON</button></div>
+          <details><summary>Lihat isi edukasi.json</summary><textarea class="json" id="e_json" readonly></textarea></details>
         </div>
       </div></div>
     </div>
@@ -280,8 +314,50 @@ const BERITA=(function(){
   return { load, addMode };
 })();
 
-function loadAll(){ offline=false; PRODUK.load(); BERITA.load(); setTimeout(()=>{ $('offlineBanner').classList.toggle('show',offline); },400); }
-$('reload').addEventListener('click',()=>{ PRODUK.addMode(); BERITA.addMode(); loadAll(); });
+/* ============ MANAGER EDUKASI ============ */
+const EDUKASI=(function(){
+  const lvlColors={Pemula:'#1FA971',Menengah:'#E09A1F',Lanjut:'#F97316'};
+  const EICON='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>';
+  const DEF=[
+    {judul:"Dasar-dasar AI untuk Pemula",level:"Pemula",ringkasan:"Kenalan dengan konsep AI, machine learning, dan cara memakainya sehari-hari.",durasi:"45 mnt",img:"",link:"#"},
+    {judul:"Bikin AI Agent Pertamamu",level:"Menengah",ringkasan:"Langkah praktis merancang chatbot & AI agent tanpa harus jago coding.",durasi:"1,5 jam",img:"",link:"#"},
+    {judul:"AI Automation untuk Bisnis",level:"Lanjut",ringkasan:"Rancang alur otomasi yang menghemat waktu dari lead sampai laporan.",durasi:"2 jam",img:"",link:"#"}
+  ];
+  let data=[], edit=-1, img='';
+  const bg=p=>{ const c=lvlColors[p.level]||'#1FA971'; return 'linear-gradient(135deg,'+c+',#16265C)'; };
+  const setPrev=s=>{ $('e_prev').innerHTML=s?'<img src="'+s+'" alt="">':EICON; };
+  const flash=(t,ok)=>{ $('e_msg').style.color=ok===false?'#c0392b':'#1f8a55'; $('e_msg').textContent=t; if(t)setTimeout(()=>$('e_msg').textContent='',3500); };
+  const json=()=>$('e_json').value=JSON.stringify(data,null,2);
+  function render(){
+    $('e_count').textContent=data.length; const L=$('e_list');
+    if(!data.length){ L.innerHTML='<div class="empty">Belum ada materi.</div>'; json(); return; }
+    L.innerHTML='';
+    data.forEach((p,i)=>{ const r=document.createElement('div'); r.className='item'+(i===edit?' editing':'');
+      const cov=p.img?'<img src="'+p.img+'" alt="">':EICON;
+      r.innerHTML='<div class="item__cov" style="background:'+bg(p)+'">'+cov+'</div>'+
+        '<div class="item__main"><h3>'+esc(p.judul)+'</h3><div class="item__meta"><span class="badge" style="background:'+(lvlColors[p.level]||'#1FA971')+'">'+esc(p.level)+'</span><span class="small">⏱ '+esc(p.durasi||'-')+'</span></div></div>'+
+        '<div class="item__act"><button class="iconbtn edit" title="Edit">✎</button><button class="iconbtn del" title="Hapus">🗑</button></div>';
+      r.querySelector('.edit').addEventListener('click',()=>startEdit(i)); r.querySelector('.del').addEventListener('click',()=>del(i)); L.appendChild(r);
+    }); json();
+  }
+  function clear(){ ['e_judul','e_ring','e_durasi','e_link'].forEach(id=>$(id).value=''); $('e_level').value='Pemula'; $('e_img').value=''; img=''; setPrev(''); }
+  function addMode(){ edit=-1; $('e_title').textContent='Tambah materi edukasi'; $('e_sub').textContent='Isi detail lalu klik “Tambah”.'; $('e_save').textContent='Tambah'; $('e_cancel').style.display='none'; clear(); render(); }
+  function startEdit(i){ edit=i; const p=data[i]; $('e_judul').value=p.judul||''; $('e_level').value=p.level||'Pemula'; $('e_durasi').value=p.durasi||''; $('e_ring').value=p.ringkasan||''; $('e_link').value=p.link||''; img=p.img||''; setPrev(img);
+    $('e_title').textContent='Edit materi'; $('e_sub').textContent='Ubah lalu “Simpan perubahan”.'; $('e_save').textContent='Simpan perubahan'; $('e_cancel').style.display=''; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+  function del(i){ if(!confirm('Hapus materi ini?'))return; data.splice(i,1); if(edit===i)addMode(); else{ if(edit>i)edit--; render(); } flash('Dihapus. Jangan lupa Download edukasi.json.'); }
+  $('e_save').addEventListener('click',()=>{ const judul=$('e_judul').value.trim(); if(!judul){flash('Judul wajib.',false);return;}
+    const p={judul,level:$('e_level').value,ringkasan:$('e_ring').value.trim(),durasi:$('e_durasi').value.trim()||'-',img,link:$('e_link').value.trim()||'#'};
+    if(edit===-1){data.push(p);flash('Ditambahkan. Download edukasi.json.');}else{data[edit]=p;flash('Disimpan. Download edukasi.json.');} addMode(); });
+  $('e_cancel').addEventListener('click',addMode);
+  $('e_img').addEventListener('change',()=>{ const f=$('e_img').files[0]; if(!f)return; const r=new FileReader(); r.onload=()=>{img=r.result;setPrev(img);}; r.readAsDataURL(f); });
+  $('e_download').addEventListener('click',()=>{ download('edukasi.json',data); flash('edukasi.json terunduh.'); });
+  $('e_copy').addEventListener('click',()=>{ copyTxt(JSON.stringify(data,null,2)); flash('JSON disalin.'); });
+  function load(){ fetch('edukasi.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json();}).then(d=>{data=Array.isArray(d)?d:DEF.slice();render();}).catch(()=>{data=DEF.slice();offline=true;render();}); }
+  return { load, addMode };
+})();
+
+function loadAll(){ offline=false; PRODUK.load(); BERITA.load(); EDUKASI.load(); setTimeout(()=>{ $('offlineBanner').classList.toggle('show',offline); },400); }
+$('reload').addEventListener('click',()=>{ PRODUK.addMode(); BERITA.addMode(); EDUKASI.addMode(); loadAll(); });
 loadAll();
 </script>
 </body>
