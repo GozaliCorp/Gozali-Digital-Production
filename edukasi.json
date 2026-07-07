@@ -1,0 +1,26 @@
+[
+  {
+    "judul": "Dasar-dasar AI untuk Pemula",
+    "level": "Pemula",
+    "ringkasan": "Kenalan dengan konsep AI, machine learning, dan cara memakainya sehari-hari.",
+    "durasi": "45 mnt",
+    "img": "",
+    "link": "#"
+  },
+  {
+    "judul": "Bikin AI Agent Pertamamu",
+    "level": "Menengah",
+    "ringkasan": "Langkah praktis merancang chatbot & AI agent tanpa harus jago coding.",
+    "durasi": "1,5 jam",
+    "img": "",
+    "link": "#"
+  },
+  {
+    "judul": "AI Automation untuk Bisnis",
+    "level": "Lanjut",
+    "ringkasan": "Rancang alur otomasi yang menghemat waktu dari lead sampai laporan.",
+    "durasi": "2 jam",
+    "img": "",
+    "link": "#"
+  }
+]
