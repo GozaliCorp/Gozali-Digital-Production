@@ -99,7 +99,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--gold-2); outline-
 <div class="wrap">
   <div class="head">
     <h1>Kelola konten situs</h1>
-    <p>Atur <b>Produk</b> dan <b>Berita</b>. Setelah selesai, unduh file JSON-nya lalu ganti file itu di repo GitHub agar tayang untuk semua pengunjung.</p>
+    <p>Atur <b>Produk</b>, <b>Berita</b>, <b>Edukasi</b>, dan <b>Pembayaran</b> (QRIS &amp; nomor). Setelah selesai, unduh file JSON-nya lalu ganti file itu di repo GitHub agar tayang untuk semua pengunjung.</p>
     <div class="banner" id="offlineBanner">
       <span>⚠️</span>
       <span><b>Mode lokal:</b> file <code>products.json</code>/<code>news.json</code> tak terbaca via <code>file://</code>, jadi memakai data contoh. Setelah online di GitHub Pages, data terbaca dari file asli. Anda tetap bisa menyusun &amp; mengunduh JSON dari sini.</span>
@@ -108,6 +108,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--gold-2); outline-
       <button class="tab active" data-tab="produk" type="button">🛍 Produk</button>
       <button class="tab" data-tab="berita" type="button">📰 Berita</button>
       <button class="tab" data-tab="edukasi" type="button">🎓 Edukasi</button>
+      <button class="tab" data-tab="pembayaran" type="button">💳 Pembayaran</button>
     </div>
   </div>
 
@@ -210,6 +211,51 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--gold-2); outline-
           <p class="note">Terbit: <b>Download edukasi.json</b> → GitHub → ganti file lama → commit.</p>
           <div class="bar__act"><button class="btn btn--gold btn--sm" id="e_download" type="button">⬇ Download edukasi.json</button><button class="btn btn--ghost btn--sm" id="e_copy" type="button">Salin JSON</button></div>
           <details><summary>Lihat isi edukasi.json</summary><textarea class="json" id="e_json" readonly></textarea></details>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ================= PANEL PEMBAYARAN ================= -->
+  <div class="panel" id="panel-pembayaran">
+    <div class="grid">
+      <div class="card form-sticky">
+        <div class="card__pad">
+          <h2>Info pembayaran</h2>
+          <p class="sub">Ganti QRIS &amp; nomor rekening di sini. Perubahan langsung terlihat di pratinjau.</p>
+          <div class="field"><label>Gambar QRIS</label>
+            <div class="uploader"><div class="uploader__prev" id="pay_prev" style="background:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="#0E1A40" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M20 14v0M17 20h0M20 17v4"/></svg></div>
+              <div><label class="uploader__btn" for="pay_qris">Unggah QRIS</label><input id="pay_qris" type="file" accept="image/*" hidden><small>Boleh kartu QRIS penuh atau kode QR-nya saja. Disarankan <b>kode QR saja</b> agar paling tajam. Gambar otomatis dirapikan ke bentuk persegi.</small></div></div>
+          </div>
+          <div class="field"><label for="pay_merchant">Nama merchant</label><input id="pay_merchant" type="text" placeholder="M GOZALI SALIM, DIGITAL &amp; KREATIF"></div>
+          <div class="field"><label for="pay_nmid">NMID</label><input id="pay_nmid" type="text" placeholder="ID1026545885604"></div>
+          <div class="row">
+            <div class="field"><label for="pay_ew">Nomor e-wallet</label><input id="pay_ew" type="text" placeholder="085600000279"></div>
+            <div class="field"><label for="pay_holder">Atas nama</label><input id="pay_holder" type="text" placeholder="M Gozali Salim"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="pay_bankname">Nama bank</label><input id="pay_bankname" type="text" placeholder="Bank Mandiri"></div>
+            <div class="field"><label for="pay_bankno">No. rekening</label><input id="pay_bankno" type="text" placeholder="1020004981236"></div>
+          </div>
+          <div class="field"><label for="pay_wa">Nomor WhatsApp (konfirmasi)</label><input id="pay_wa" type="text" placeholder="6285600000279"></div>
+          <div class="form-act"><span class="msg" id="pay_msg"></span></div>
+        </div>
+      </div>
+      <div class="card"><div class="card__pad">
+        <div class="list-head"><h2>Pratinjau</h2></div>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,#0E1A40,#16265C);border-radius:16px;padding:18px;margin-bottom:16px">
+          <div style="background:#fff;padding:10px;border-radius:12px;flex:none"><img id="pay_qrBig" alt="Pratinjau QRIS" style="display:block;width:132px;height:132px;object-fit:contain;background:#fff"></div>
+          <div style="min-width:170px">
+            <div style="font-weight:800;color:#F4B63E;font-size:.92rem;line-height:1.2" id="pay_pvMerchant">—</div>
+            <div style="font-size:.78rem;color:#C6CCE6;margin-top:3px" id="pay_pvNmid">NMID: —</div>
+            <div style="font-size:.82rem;color:#EAEDFA;margin-top:9px" id="pay_pvEw">E-wallet: —</div>
+            <div style="font-size:.82rem;color:#EAEDFA;margin-top:2px" id="pay_pvBank">Bank: —</div>
+          </div>
+        </div>
+        <div class="export">
+          <p class="note">Terbit: <b>Download pembayaran.json</b> → GitHub → ganti file lama → commit.</p>
+          <div class="bar__act"><button class="btn btn--gold btn--sm" id="pay_download" type="button">⬇ Download pembayaran.json</button><button class="btn btn--ghost btn--sm" id="pay_copy" type="button">Salin JSON</button></div>
+          <details><summary>Lihat isi pembayaran.json</summary><textarea class="json" id="pay_json" readonly></textarea></details>
         </div>
       </div></div>
     </div>
@@ -356,7 +402,56 @@ const EDUKASI=(function(){
   return { load, addMode };
 })();
 
-function loadAll(){ offline=false; PRODUK.load(); BERITA.load(); EDUKASI.load(); setTimeout(()=>{ $('offlineBanner').classList.toggle('show',offline); },400); }
+/* ============ MANAGER PEMBAYARAN ============ */
+const PEMBAYARAN=(function(){
+  const QICON='<svg viewBox="0 0 24 24" fill="none" stroke="#0E1A40" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M17 20h0M20 17v4"/></svg>';
+  const DEF={qris:'',merchant:'M GOZALI SALIM, DIGITAL & KREATIF',nmid:'ID1026545885604',ewallet_no:'085600000279',bank_name:'Bank Mandiri',bank_no:'1020004981236',holder:'M Gozali Salim',wa:'6285600000279'};
+  let cur=Object.assign({},DEF);
+  const flash=(t,ok)=>{ $('pay_msg').style.color=ok===false?'#c0392b':'#1f8a55'; $('pay_msg').textContent=t; if(t)setTimeout(()=>$('pay_msg').textContent='',3500); };
+  function setPrev(s){ $('pay_prev').innerHTML = s ? '<img src="'+s+'" alt="" style="width:100%;height:100%;object-fit:contain;background:#fff">' : QICON; if($('pay_qrBig')) $('pay_qrBig').src = s || ''; }
+  function readForm(){
+    cur.merchant=$('pay_merchant').value.trim()||DEF.merchant;
+    cur.nmid=$('pay_nmid').value.trim()||DEF.nmid;
+    cur.ewallet_no=$('pay_ew').value.trim()||DEF.ewallet_no;
+    cur.holder=$('pay_holder').value.trim()||DEF.holder;
+    cur.bank_name=$('pay_bankname').value.trim()||DEF.bank_name;
+    cur.bank_no=$('pay_bankno').value.trim()||DEF.bank_no;
+    cur.wa=$('pay_wa').value.trim()||DEF.wa;
+  }
+  function update(){
+    readForm();
+    $('pay_pvMerchant').textContent=cur.merchant;
+    $('pay_pvNmid').textContent='NMID: '+cur.nmid;
+    $('pay_pvEw').textContent='E-wallet: '+cur.ewallet_no+' · a.n. '+cur.holder;
+    $('pay_pvBank').textContent=cur.bank_name+': '+cur.bank_no;
+    $('pay_json').value=JSON.stringify(cur,null,2);
+  }
+  ['pay_merchant','pay_nmid','pay_ew','pay_holder','pay_bankname','pay_bankno','pay_wa'].forEach(id=>$(id).addEventListener('input',update));
+  $('pay_qris').addEventListener('change',()=>{
+    const f=$('pay_qris').files[0]; if(!f)return;
+    const r=new FileReader();
+    r.onload=()=>{ const im=new Image(); im.onload=()=>{
+      const size=660, c=document.createElement('canvas'); c.width=c.height=size; const x=c.getContext('2d');
+      x.fillStyle='#fff'; x.fillRect(0,0,size,size);
+      const sc=Math.min(size/im.width,size/im.height), w=im.width*sc, h=im.height*sc;
+      x.drawImage(im,(size-w)/2,(size-h)/2,w,h);
+      cur.qris=c.toDataURL('image/png'); setPrev(cur.qris); update(); flash('QRIS diperbarui. Jangan lupa Download pembayaran.json.');
+    }; im.onerror=()=>flash('Gambar tak terbaca.',false); im.src=r.result; };
+    r.readAsDataURL(f);
+  });
+  $('pay_download').addEventListener('click',()=>{ readForm(); download('pembayaran.json',cur); flash('pembayaran.json terunduh.'); });
+  $('pay_copy').addEventListener('click',()=>{ readForm(); copyTxt(JSON.stringify(cur,null,2)); flash('JSON disalin.'); });
+  function fillForm(p){
+    $('pay_merchant').value=p.merchant||''; $('pay_nmid').value=p.nmid||'';
+    $('pay_ew').value=p.ewallet_no||''; $('pay_holder').value=p.holder||'';
+    $('pay_bankname').value=p.bank_name||''; $('pay_bankno').value=p.bank_no||'';
+    $('pay_wa').value=p.wa||''; cur=Object.assign({},DEF,p); setPrev(p.qris||''); update();
+  }
+  function load(){ fetch('pembayaran.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json();}).then(d=>{fillForm(Object.assign({},DEF,d||{}));}).catch(()=>{fillForm(DEF);offline=true;}); }
+  return { load, addMode:()=>{} };
+})();
+
+function loadAll(){ offline=false; PRODUK.load(); BERITA.load(); EDUKASI.load(); PEMBAYARAN.load(); setTimeout(()=>{ $('offlineBanner').classList.toggle('show',offline); },400); }
 $('reload').addEventListener('click',()=>{ PRODUK.addMode(); BERITA.addMode(); EDUKASI.addMode(); loadAll(); });
 loadAll();
 </script>
