@@ -196,7 +196,7 @@ h1,h2,h3{ font-family:var(--fd); line-height:1.1; font-weight:600; }
 .qris-card::before{ content:""; position:absolute; top:-45%; right:-8%; width:360px; height:360px; background:radial-gradient(circle,rgba(33,184,214,.30),transparent 70%); pointer-events:none; }
 .qris-card::after{ content:""; position:absolute; bottom:-55%; left:-10%; width:300px; height:300px; background:radial-gradient(circle,rgba(244,182,62,.16),transparent 70%); pointer-events:none; }
 .qris-qr{ background:#fff; padding:15px; border-radius:20px; box-shadow:0 18px 44px rgba(0,0,0,.38); position:relative; z-index:1; }
-.qris-qr img{ display:block; width:206px; height:206px; image-rendering:pixelated; }
+.qris-qr img{ display:block; width:206px; height:206px; object-fit:contain; background:#fff; image-rendering:pixelated; }
 .qris-body{ position:relative; z-index:1; }
 .qris-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(33,184,214,.18); color:#8FE6F7; border:1px solid rgba(33,184,214,.38); font-weight:800; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; padding:6px 13px; border-radius:100px; }
 .qris-body h3{ font-family:var(--fd); font-size:1.62rem; line-height:1.14; margin:14px 0 8px; color:#fff; }
@@ -420,8 +420,8 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--gold-2); outline-
       <div class="qris-body">
         <span class="qris-badge">✦ QRIS · Satu QR untuk semua</span>
         <h3>Scan &amp; bayar pakai QRIS</h3>
-        <p class="qris-merchant">M GOZALI SALIM, DIGITAL &amp; KREATIF</p>
-        <p class="qris-nmid">NMID: ID1026545885604 · GPN</p>
+        <p class="qris-merchant" id="qrisMerchant">M GOZALI SALIM, DIGITAL &amp; KREATIF</p>
+        <p class="qris-nmid" id="qrisNmid">NMID: ID1026545885604 · GPN</p>
         <p class="qris-desc">Buka aplikasi apa pun yang berlogo QRIS, scan kode di samping, lalu bayar. Berlaku untuk semua e-wallet &amp; m-banking.</p>
         <div class="qris-apps">
           <span class="qris-chip">DANA</span>
@@ -449,10 +449,10 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--gold-2); outline-
           <span class="pm pm-link"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#E11F26"/><rect x="8.7" y="4.5" width="2.6" height="7" rx="1.3" fill="#fff"/><circle cx="10" cy="14.5" r="1.5" fill="#fff"/></svg>LinkAja</span>
         </div>
         <div class="pay-row">
-          <div><span class="lbl">Nomor tujuan</span><span class="val">0856 0000 0279</span></div>
-          <button class="copy-btn" type="button" data-copy="085600000279">⧉ Salin</button>
+          <div><span class="lbl">Nomor tujuan</span><span class="val" id="ewVal">0856 0000 0279</span></div>
+          <button class="copy-btn" type="button" id="ewCopy" data-copy="085600000279">⧉ Salin</button>
         </div>
-        <p class="pay-name">a.n. <b>M Gozali Salim</b></p>
+        <p class="pay-name">a.n. <b id="ewName">M Gozali Salim</b></p>
       </article>
       <article class="pay-card reveal" data-d="2">
         <div class="pay-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18M5 10V20M19 10V20M3 20h18M12 3 3 8h18l-9-5z"/><path d="M9 13v4M15 13v4"/></svg></div>
@@ -461,13 +461,13 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--gold-2); outline-
           <span class="pm pm-mandiri"><svg viewBox="0 0 22 20"><path d="M2 13c3-6 6 4 9-1s6-8 9-2" fill="none" stroke="#FFB81C" stroke-width="3" stroke-linecap="round"/></svg>mandiri</span>
         </div>
         <div class="pay-row">
-          <div><span class="lbl">Bank Mandiri — No. Rekening</span><span class="val">1020004981236</span></div>
-          <button class="copy-btn" type="button" data-copy="1020004981236">⧉ Salin</button>
+          <div><span class="lbl" id="bankLbl">Bank Mandiri — No. Rekening</span><span class="val" id="bankVal">1020004981236</span></div>
+          <button class="copy-btn" type="button" id="bankCopy" data-copy="1020004981236">⧉ Salin</button>
         </div>
-        <p class="pay-name">a.n. <b>M Gozali Salim</b></p>
+        <p class="pay-name">a.n. <b id="bankName">M Gozali Salim</b></p>
       </article>
     </div>
-    <p class="pay-note reveal">Sudah bayar? <a href="https://wa.me/6285600000279?text=Halo%20Gozali%2C%20saya%20sudah%20transfer%20pembayaran" target="_blank" rel="noopener" style="color:var(--orange-2);font-weight:700;">Konfirmasi via WhatsApp →</a></p>
+    <p class="pay-note reveal">Sudah bayar? <a id="waLink" href="https://wa.me/6285600000279?text=Halo%20Gozali%2C%20saya%20sudah%20transfer%20pembayaran" target="_blank" rel="noopener" style="color:var(--orange-2);font-weight:700;">Konfirmasi via WhatsApp →</a></p>
   </div>
 </section>
 
@@ -641,6 +641,39 @@ const NEWS_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width
   }
   fetch('edukasi.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json();})
     .then(d=>render(Array.isArray(d)?d:DEFAULT_EDU)).catch(()=>render(DEFAULT_EDU));
+})();
+
+/* ---------- PEMBAYARAN (pembayaran.json) ---------- */
+(function(){
+  const $=id=>document.getElementById(id);
+  const DEFAULT_PAY={
+    qris: ($('qrisImg')?$('qrisImg').src:''),
+    merchant:'M GOZALI SALIM, DIGITAL & KREATIF',
+    nmid:'ID1026545885604',
+    ewallet_no:'085600000279',
+    bank_name:'Bank Mandiri',
+    bank_no:'1020004981236',
+    holder:'M Gozali Salim',
+    wa:'6285600000279'
+  };
+  const digits=s=>String(s||'').replace(/\D/g,'');
+  const group4=s=>digits(s).replace(/(.{4})/g,'$1 ').trim();
+  function apply(p){
+    if(p.qris && $('qrisImg')){ $('qrisImg').src=p.qris; }
+    if(p.qris && $('qrisDownload')){ $('qrisDownload').href=p.qris; }
+    if($('qrisMerchant')) $('qrisMerchant').textContent=p.merchant||'';
+    if($('qrisNmid')) $('qrisNmid').textContent='NMID: '+(p.nmid||'')+' · GPN';
+    if($('ewVal')) $('ewVal').textContent=group4(p.ewallet_no);
+    if($('ewCopy')) $('ewCopy').setAttribute('data-copy',digits(p.ewallet_no));
+    if($('ewName')) $('ewName').textContent=p.holder||'';
+    if($('bankLbl')) $('bankLbl').textContent=(p.bank_name||'Bank')+' — No. Rekening';
+    if($('bankVal')) $('bankVal').textContent=digits(p.bank_no);
+    if($('bankCopy')) $('bankCopy').setAttribute('data-copy',digits(p.bank_no));
+    if($('bankName')) $('bankName').textContent=p.holder||'';
+    if($('waLink')) $('waLink').href='https://wa.me/'+digits(p.wa)+'?text=Halo%20Gozali%2C%20saya%20sudah%20transfer%20pembayaran';
+  }
+  fetch('pembayaran.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json();})
+    .then(d=>apply(Object.assign({},DEFAULT_PAY,d||{}))).catch(()=>apply(DEFAULT_PAY));
 })();
 
 /* ---------- tombol salin nomor ---------- */
