@@ -1,690 +1,849 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gozali Corp Technology — Berita Teknologi Terbaru, Ebook, AI & Automation</title>
-<meta name="description" content="Gozali Corp Technology: portal berita teknologi terbaru & viral dunia, jual ebook, pembuatan Smart Tools & AI Agent, Content Creator Medsos, AI Automation, dan edukasi teknologi." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gozali Corp Technology — One-Stop IT Solution & Digital Production</title>
+<meta name="description" content="Gozali Corp Technology membantu perorangan, UMKM, hingga korporasi membangun ekosistem digital terintegrasi: produksi konten, otomatisasi cerdas, solusi IT, dan produk digital premium.">
+<meta name="theme-color" content="#0A192F">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gozali Corp Technology — One-Stop IT & Digital Production">
+<meta property="og:description" content="Ekosistem digital terintegrasi untuk perorangan, UMKM, hingga korporasi.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.gozalicorp.my.id">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-/* ============ 1) TOKEN DESAIN (ubah warna di sini) ============ */
+/* ============================================================
+   GOZALI CORP TECHNOLOGY — Design Tokens
+   ============================================================ */
 :root{
-  --navy:#0E1A40; --navy-2:#16265C; --navy-3:#0A1230;
-  --gold:#F4B63E; --gold-2:#E09A1F;
-  --orange:#F97316; --orange-2:#EA6A0A;
-  --ai:#21B8D6; --ai-2:#1796B0;
-  --cream:#FBF6EC; --ink:#0E1A40; --muted:#5B6488;
-  --line:rgba(14,26,64,.10); --white:#fff;
-  /* warna kategori berita */
-  --c-ai:#21B8D6; --c-block:#F4B63E; --c-gadget:#F97316; --c-startup:#1FA971; --c-cyber:#E4572E; --c-viral:#C2317E;
-  --radius:20px; --radius-lg:32px;
-  --shadow:0 18px 40px -18px rgba(14,26,64,.28); --shadow-sm:0 8px 20px -10px rgba(14,26,64,.25);
-  --maxw:1200px; --ease:cubic-bezier(.22,1,.36,1);
-  --fd:"Fraunces",Georgia,serif; --fb:"Plus Jakarta Sans",system-ui,sans-serif;
+  --navy-950:#0A192F;
+  --navy-900:#0C1D38;
+  --navy-850:#102544;
+  --navy-800:#152C4F;
+  --line:#1E3358;
+  --line-soft:#17284a;
+
+  --blue:#0052FF;
+  --blue-bright:#3A78FF;
+  --orange:#FF6B00;
+  --orange-deep:#E56000;
+  --cyan:#22D3EE;
+
+  --ink-100:#EAF1FB;
+  --ink-200:#C6D3E8;
+  --ink-300:#95A6C2;
+  --ink-500:#5F719120;
+
+  --font-sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+
+  --maxw:1200px;
+  --radius:18px;
+  --radius-sm:12px;
+  --ease:cubic-bezier(.22,.61,.36,1);
 }
-*{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; }
-body{ font-family:var(--fb); color:var(--ink); background:var(--cream); line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
-img{ max-width:100%; display:block; } a{ color:inherit; text-decoration:none; } ul{ list-style:none; }
-.wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:24px; }
-.section{ padding-block:clamp(56px,8vw,104px); }
-.eyebrow{ display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-2); }
-.eyebrow::before{ content:""; width:26px; height:2px; border-radius:2px; background:var(--gold); }
-h1,h2,h3{ font-family:var(--fd); line-height:1.1; font-weight:600; }
-.h2{ font-size:clamp(1.9rem,4.2vw,2.9rem); letter-spacing:-.01em; }
-.lead{ color:var(--muted); font-size:clamp(1rem,1.6vw,1.14rem); max-width:56ch; }
 
-/* ============ TOMBOL ============ */
-.btn{ --bg:var(--navy); --fg:#fff; display:inline-flex; align-items:center; gap:9px; font-family:var(--fb); font-weight:700; font-size:.96rem; background:var(--bg); color:var(--fg); padding:14px 24px; border:0; border-radius:100px; cursor:pointer; transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .25s; box-shadow:var(--shadow-sm); }
-.btn:hover{ transform:translateY(-3px) scale(1.02); }
-.btn--gold{ --bg:var(--gold); --fg:var(--navy); } .btn--gold:hover{ background:var(--gold-2); }
-.btn--orange{ --bg:var(--orange); --fg:#fff; } .btn--orange:hover{ background:var(--orange-2); }
-.btn--ghost{ --bg:transparent; --fg:var(--navy); border:1.6px solid var(--line); box-shadow:none; } .btn--ghost:hover{ background:#fff; border-color:var(--navy); }
-.btn--light{ --bg:rgba(255,255,255,.1); --fg:#fff; border:1.6px solid rgba(255,255,255,.25); box-shadow:none; } .btn--light:hover{ background:rgba(255,255,255,.2); }
-.btn .arr{ transition:transform .35s var(--ease); } .btn:hover .arr{ transform:translateX(4px); }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-sans);
+  background:var(--navy-950);
+  color:var(--ink-200);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--blue);color:#fff}
 
-/* ============ TICKER TRENDING ============ */
-.ticker{ background:var(--navy-3); color:#E7EBFB; font-size:.86rem; border-bottom:1px solid rgba(255,255,255,.08); }
-.ticker__in{ display:flex; align-items:center; gap:16px; height:40px; overflow:hidden; }
-.ticker__tag{ flex:none; display:inline-flex; align-items:center; gap:7px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; font-size:.72rem; color:var(--navy); background:var(--gold); padding:5px 11px; border-radius:100px; }
-.ticker__dot{ width:7px; height:7px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 0 rgba(249,115,22,.6); animation:blink 1.6s var(--ease) infinite; }
-@keyframes blink{ 0%,100%{ opacity:1 } 50%{ opacity:.3 } }
-.ticker__track{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); flex:1; }
-.ticker__row{ display:flex; gap:40px; width:max-content; animation:slide 34s linear infinite; }
-.ticker__row a{ white-space:nowrap; color:#C7CEEA; } .ticker__row a:hover{ color:var(--gold); }
-.ticker__row b{ color:var(--ai); margin-right:6px; }
-@keyframes slide{ to{ transform:translateX(-50%) } }
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-/* ============ NAVBAR ============ */
-.nav{ position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--cream) 84%, transparent); backdrop-filter:blur(12px); border-bottom:1px solid transparent; transition:.3s; }
-.nav.scrolled{ border-color:var(--line); box-shadow:0 6px 20px -16px rgba(14,26,64,.5); }
-.nav__in{ display:flex; align-items:center; justify-content:space-between; height:72px; }
-.logo{ display:inline-flex; align-items:center; gap:11px; }
-.logo__dot{ width:38px; height:38px; border-radius:11px; flex:none; background:linear-gradient(135deg,var(--gold),var(--orange)); display:grid; place-items:center; color:var(--navy); font-weight:800; font-size:1.15rem; transform:rotate(-8deg); box-shadow:var(--shadow-sm); }
-.logo__txt{ font-family:var(--fd); font-weight:700; font-size:1.14rem; line-height:1; }
-.logo__txt small{ display:block; font-family:var(--fb); font-weight:700; font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-2); margin-top:3px; }
-.nav__links{ display:flex; align-items:center; gap:30px; }
-.nav__links a{ font-weight:600; font-size:.94rem; position:relative; }
-.nav__links a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--gold); border-radius:2px; transition:width .3s var(--ease); }
-.nav__links a:hover::after{ width:100%; }
-.nav__cta{ display:flex; align-items:center; gap:12px; }
-.burger{ display:none; background:none; border:0; cursor:pointer; padding:8px; }
-.burger span{ display:block; width:24px; height:2.4px; background:var(--navy); border-radius:3px; margin:5px 0; transition:.3s; }
+/* eyebrow / mono label */
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--cyan);opacity:.6}
 
-/* ============ HERO (media) ============ */
-.hero{ background:linear-gradient(160deg,var(--navy),var(--navy-3)); color:#EDF0FB; position:relative; overflow:hidden; }
-.hero::before{ content:""; position:absolute; inset:0; opacity:.5; background:radial-gradient(60% 55% at 82% 8%, rgba(33,184,214,.22), transparent 60%), radial-gradient(50% 45% at 8% 92%, rgba(249,115,22,.18), transparent 60%); }
-.hero__deco{ position:absolute; inset:0; opacity:.10; background-image:radial-gradient(circle,#fff 1px,transparent 1.4px); background-size:26px 26px; }
-.hero__grid{ position:relative; display:grid; grid-template-columns:1.02fr .98fr; gap:44px; align-items:center; padding-block:clamp(48px,7vw,88px); }
-.hero__badge{ display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); padding:7px 15px; border-radius:100px; font-weight:600; font-size:.84rem; margin-bottom:22px; }
-.hero__badge b{ color:var(--gold); }
-.hero h1{ font-size:clamp(2.4rem,5.4vw,4rem); letter-spacing:-.02em; color:#fff; }
-.hero h1 .hl{ position:relative; white-space:nowrap; }
-.hero h1 .hl::after{ content:""; position:absolute; left:-2%; right:-2%; bottom:.06em; height:.32em; z-index:-1; background:linear-gradient(90deg,var(--gold),var(--orange) 50%,var(--ai)); border-radius:8px; transform:skewX(-8deg); opacity:.85; }
-.hero__lead{ margin:22px 0 30px; color:#C3CBE6; font-size:clamp(1rem,1.6vw,1.18rem); max-width:46ch; }
-.hero__actions{ display:flex; flex-wrap:wrap; gap:13px; }
-.hero__stats{ display:flex; gap:32px; margin-top:38px; flex-wrap:wrap; }
-.hero__stats b{ font-family:var(--fd); font-size:1.8rem; font-weight:700; display:block; line-height:1; color:#fff; }
-.hero__stats span{ font-size:.84rem; color:#A9B2D6; }
-/* kartu berita unggulan di hero */
-.feat{ position:relative; border-radius:var(--radius-lg); overflow:hidden; min-height:380px; display:flex; flex-direction:column; justify-content:flex-end; padding:30px; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.1); }
-.feat__bg{ position:absolute; inset:0; background:linear-gradient(135deg,#243a7a,#16265C); }
-.feat__bg::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 30%, rgba(10,18,48,.86)); }
-.feat__deco{ position:absolute; inset:0; opacity:.16; background-image:radial-gradient(circle,#fff 1px,transparent 1.4px); background-size:24px 24px; }
-.feat__body{ position:relative; z-index:1; }
-.feat h3{ color:#fff; font-size:1.7rem; margin:10px 0 8px; line-height:1.15; }
-.feat p{ color:#D6DBF0; font-size:.95rem; max-width:42ch; }
-.feat__meta{ display:flex; align-items:center; gap:10px; margin-top:14px; font-size:.82rem; color:#AEB6DA; }
+h1,h2,h3{color:var(--ink-100);font-weight:800;letter-spacing:-.02em;line-height:1.12}
+.section-head{max-width:640px;margin:0 auto 56px;text-align:center}
+.section-head h2{font-size:clamp(26px,4vw,40px);margin:16px 0 14px}
+.section-head p{color:var(--ink-300);font-size:15px}
 
-/* ============ CHIP KATEGORI ============ */
-.chip{ font-size:.7rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:5px 11px; border-radius:100px; color:#fff; display:inline-block; }
-.k-AI{ background:var(--c-ai); } .k-Blockchain{ background:var(--c-block); color:var(--navy); }
-.k-Gadget{ background:var(--c-gadget); } .k-Startup{ background:var(--c-startup); }
-.k-Cybersecurity{ background:var(--c-cyber); } .k-Viral{ background:var(--c-viral); }
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-weight:600;font-size:15px;
+  padding:14px 26px;border-radius:14px;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;
+  cursor:pointer;border:1px solid transparent;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 12px 30px -12px rgba(0,82,255,.7)}
+.btn-blue:hover{background:#0046dd;box-shadow:0 18px 40px -12px rgba(0,82,255,.9)}
+.btn-orange{background:var(--orange);color:#fff;box-shadow:0 12px 30px -12px rgba(255,107,0,.6)}
+.btn-orange:hover{background:var(--orange-deep)}
+.btn-ghost{background:rgba(255,255,255,.03);border-color:var(--line);color:var(--ink-100)}
+.btn-ghost:hover{border-color:#33507f;background:rgba(255,255,255,.06)}
+.btn-block{width:100%}
 
-/* ============ BERITA ============ */
-.topics{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:34px; }
-.topics span{ font-size:.82rem; font-weight:700; color:var(--navy); background:#fff; border:1px solid var(--line); padding:8px 15px; border-radius:100px; box-shadow:var(--shadow-sm); }
-.news-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-.post{ background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; transition:transform .4s var(--ease), box-shadow .4s var(--ease); }
-.post:hover{ transform:translateY(-8px); box-shadow:var(--shadow); }
-.post__cov{ aspect-ratio:16/9; position:relative; display:grid; place-items:center; }
-.post__cov svg{ width:20%; height:20%; opacity:.9; } .post__cov img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.post__deco{ position:absolute; inset:0; opacity:.16; background-image:radial-gradient(circle,#fff 1px,transparent 1.4px); background-size:22px 22px; }
-.post__chip{ position:absolute; top:14px; left:14px; }
-.post__body{ padding:20px; display:flex; flex-direction:column; gap:8px; flex:1; }
-.post__body h3{ font-size:1.2rem; line-height:1.25; }
-.post__body p{ color:var(--muted); font-size:.92rem; }
-.post__meta{ display:flex; align-items:center; gap:10px; margin-top:auto; padding-top:12px; font-size:.8rem; color:var(--muted); }
-.post__meta .rd{ margin-left:auto; }
-.sec-head{ display:flex; align-items:end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:24px; }
+/* ============ NAV ============ */
+header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(10,25,47,.82);
+  backdrop-filter:saturate(160%) blur(14px);
+  -webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em;color:#fff;font-size:19px}
+.brand .mark{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  display:grid;place-items:center;font-family:var(--font-mono);font-size:15px;color:#fff;
+  box-shadow:0 6px 18px -6px rgba(0,82,255,.8);
+}
+.brand span{color:var(--blue-bright)}
+.nav-links{display:flex;gap:30px;font-size:14.5px;font-weight:500}
+.nav-links a{color:var(--ink-300);transition:color .2s;position:relative}
+.nav-links a:hover{color:#fff}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--blue-bright);transition:width .25s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:42px;height:42px;color:#fff;cursor:pointer}
+.menu-btn svg{margin:auto}
 
-/* ============ LAYANAN ============ */
-.services{ background:#fff; }
-.svc-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-.svc{ background:var(--cream); border:1px solid var(--line); border-radius:var(--radius); padding:26px 24px; transition:transform .4s var(--ease), box-shadow .4s var(--ease), background .3s; }
-.svc:hover{ transform:translateY(-8px); box-shadow:var(--shadow); background:#fff; }
-.svc__ic{ width:52px; height:52px; border-radius:15px; display:grid; place-items:center; margin-bottom:16px; }
-.svc__ic svg{ width:26px; height:26px; }
-.svc:nth-child(1) .svc__ic{ background:rgba(249,115,22,.16); color:var(--orange-2); }
-.svc:nth-child(2) .svc__ic{ background:rgba(33,184,214,.16); color:var(--ai-2); }
-.svc:nth-child(3) .svc__ic{ background:rgba(244,182,62,.2); color:var(--gold-2); }
-.svc:nth-child(4) .svc__ic{ background:rgba(31,169,113,.16); color:#178a5c; }
-.svc h3{ font-size:1.2rem; margin-bottom:8px; }
-.svc p{ color:var(--muted); font-size:.93rem; }
+/* ============ HERO ============ */
+.hero{position:relative;padding:120px 0 108px;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.grid-lines{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:54px 54px;
+  mask-image:radial-gradient(ellipse 70% 55% at 50% 40%,#000 30%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 40%,#000 30%,transparent 78%);
+  opacity:.5;
+}
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.55}
+.orb-blue{width:520px;height:520px;background:rgba(0,82,255,.5);top:-120px;left:50%;transform:translateX(-60%);animation:drift1 16s ease-in-out infinite}
+.orb-orange{width:360px;height:360px;background:rgba(255,107,0,.28);bottom:-100px;right:8%;animation:drift2 19s ease-in-out infinite}
+.orb-cyan{width:300px;height:300px;background:rgba(34,211,238,.22);top:30%;left:4%;animation:drift1 22s ease-in-out infinite}
+@keyframes drift1{50%{transform:translate(-50%,26px)}}
+@keyframes drift2{50%{transform:translate(-24px,-20px)}}
+.hero-net{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.hero-net .node{animation:pulse 3.4s ease-in-out infinite}
+.hero-net .node:nth-child(2){animation-delay:.6s}
+.hero-net .node:nth-child(3){animation-delay:1.2s}
+.hero-net .node:nth-child(4){animation-delay:1.8s}
+.hero-net .node:nth-child(5){animation-delay:2.4s}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
 
-/* ============ EDUKASI ============ */
-.edu{ background:var(--cream); }
-.edu-lvl{ font-size:.7rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:5px 11px; border-radius:100px; color:#fff; display:inline-block; }
-.lvl-Pemula{ background:#1FA971; } .lvl-Menengah{ background:var(--gold-2); } .lvl-Lanjut{ background:var(--orange); }
-.edu-link{ display:inline-flex; align-items:center; gap:7px; font-weight:700; font-size:.88rem; color:#178a5c; margin-top:4px; }
-.edu-link .arr{ transition:transform .35s var(--ease); } .post:hover .edu-link .arr{ transform:translateX(4px); }
+.hero-inner{position:relative;z-index:2;max-width:880px;margin:0 auto}
+.badge{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cyan);
+  background:rgba(34,211,238,.08);
+  border:1px solid rgba(34,211,238,.22);
+  padding:8px 16px;border-radius:999px;
+}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.hero h1{font-size:clamp(34px,6vw,62px);margin:26px 0 22px;letter-spacing:-.03em}
+.grad{background:linear-gradient(100deg,var(--blue-bright),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:clamp(15px,2vw,18px);color:var(--ink-300);max-width:620px;margin:0 auto 34px}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-trust{margin-top:40px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;color:var(--ink-300);letter-spacing:.04em}
+.hero-trust span{display:inline-flex;align-items:center;gap:8px}
+.hero-trust span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue-bright)}
 
-/* ============ PRODUK / EBOOK ============ */
-.shop{ background:var(--navy); color:var(--cream); }
-.shop .eyebrow{ color:var(--gold); } .shop .h2{ color:#fff; } .shop .lead{ color:#B9C0DE; }
-.shop-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-.prod{ background:var(--navy-2); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; transition:transform .4s var(--ease), box-shadow .4s var(--ease); }
-.prod:hover{ transform:translateY(-8px); box-shadow:0 26px 50px -22px rgba(0,0,0,.6); }
-.prod__cover{ aspect-ratio:4/3; position:relative; display:grid; place-items:center; }
-.prod__cover svg{ width:34%; height:34%; opacity:.95; } .prod__cover img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.prod__deco{ position:absolute; inset:0; opacity:.16; background-image:radial-gradient(circle,#fff 1px,transparent 1.4px); background-size:24px 24px; }
-.prod__tag{ position:absolute; top:14px; left:14px; font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--navy); background:var(--gold); padding:5px 11px; border-radius:100px; }
-.prod__body{ padding:20px; display:flex; flex-direction:column; gap:6px; flex:1; }
-.prod__body h3{ font-size:1.15rem; } .prod__body p{ color:#C2C8E4; font-size:.9rem; }
-.prod__foot{ display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:14px; }
-.prod__price b{ font-family:var(--fd); font-size:1.22rem; color:var(--gold); }
-.prod__price s{ display:block; font-size:.78rem; color:#8A92B8; }
-.prod__buy{ font-weight:700; font-size:.86rem; color:#fff; display:inline-flex; align-items:center; gap:6px; }
-.prod__buy .arr{ transition:transform .35s var(--ease); } .prod:hover .prod__buy .arr{ transform:translateX(4px); }
-.shop-status{ text-align:center; color:#B9C0DE; margin-top:22px; }
+/* ============ SECTION SPACING ============ */
+section.block{padding:96px 0;position:relative}
+.divider{border:0;height:1px;background:var(--line-soft);max-width:var(--maxw);margin:0 auto}
 
-/* ============ NEWSLETTER ============ */
-.news-cta .box{ background:linear-gradient(135deg,var(--ai),var(--navy-2)); border-radius:var(--radius-lg); padding:clamp(32px,5vw,56px); color:#fff; position:relative; overflow:hidden; box-shadow:var(--shadow); }
-.news-cta .box::before{ content:""; position:absolute; right:-40px; top:-60px; width:240px; height:240px; border-radius:50%; background:rgba(255,255,255,.12); }
-.news-cta h2{ color:#fff; font-size:clamp(1.6rem,3.4vw,2.4rem); position:relative; max-width:20ch; }
-.news-cta p{ color:rgba(255,255,255,.85); position:relative; margin-top:8px; max-width:50ch; }
-.news-cta .form{ display:flex; gap:10px; margin-top:22px; flex-wrap:wrap; position:relative; }
-.news-cta input{ flex:1; min-width:220px; padding:14px 18px; border:0; border-radius:100px; font-family:var(--fb); font-size:.95rem; }
+/* ============ SOLUTIONS ============ */
+#solutions{background:linear-gradient(180deg,#0A192F,#0a1c36 60%,#0A192F)}
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.sol-card{
+  background:linear-gradient(180deg,var(--navy-850),var(--navy-900));
+  border:1px solid var(--line-soft);
+  border-radius:var(--radius);
+  padding:32px 28px;
+  display:flex;flex-direction:column;
+  position:relative;
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+}
+.sol-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.sol-card .idx{
+  font-family:var(--font-mono);font-size:13px;font-weight:700;
+  width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:22px;
+}
+.sol-card h3{font-size:20px;margin-bottom:12px}
+.sol-card p{color:var(--ink-300);font-size:14px;margin-bottom:22px;flex-grow:0}
+.feat{list-style:none;border-top:1px solid var(--line-soft);padding-top:18px;margin-bottom:26px;display:flex;flex-direction:column;gap:12px;flex-grow:1}
+.feat li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink-200)}
+.feat li svg{flex-shrink:0;margin-top:3px}
+.tag-rec{
+  position:absolute;top:-12px;right:24px;
+  background:var(--orange);color:#fff;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  padding:6px 12px;border-radius:999px;box-shadow:0 8px 20px -8px rgba(255,107,0,.8);
+}
+.c-cyan{color:var(--cyan)} .bg-cyan{background:rgba(34,211,238,.1);color:var(--cyan)}
+.c-orange{color:var(--orange)} .bg-orange{background:rgba(255,107,0,.12);color:var(--orange)}
+.c-blue{color:var(--blue-bright)} .bg-blue{background:rgba(0,82,255,.14);color:var(--blue-bright)}
+.ring-orange{border-color:rgba(255,107,0,.35)!important}
 
-/* ============ PEMBAYARAN ============ */
-.pay{ background:#fff; }
-.pay-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
-.pay-card{ background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-lg); padding:30px; }
-.pay-card__ic{ width:52px; height:52px; border-radius:15px; display:grid; place-items:center; margin-bottom:16px; }
-.pay-card:nth-child(1) .pay-card__ic{ background:rgba(33,184,214,.16); color:var(--ai-2); }
-.pay-card:nth-child(2) .pay-card__ic{ background:rgba(244,182,62,.2); color:var(--gold-2); }
-.pay-card__ic svg{ width:26px; height:26px; }
-.pay-card h3{ font-size:1.3rem; margin-bottom:6px; }
-.pay-card p.k{ color:var(--muted); font-size:.92rem; margin-bottom:18px; }
-.paylogos{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
-.pm{ display:inline-flex; align-items:center; gap:7px; background:#fff; border:1px solid var(--line); border-radius:12px; padding:9px 13px; box-shadow:var(--shadow-sm); font-weight:800; font-size:.94rem; line-height:1; }
-.pm svg{ width:19px; height:19px; flex:none; }
-.pm-dana{ color:#108EE9; } .pm-ovo{ color:#4B2E83; } .pm-gopay{ color:#00A6C4; } .pm-link{ color:#E11F26; } .pm-mandiri{ color:#003D79; }
-.pm--sm{ padding:7px 10px; font-size:.82rem; border-radius:10px; } .pm--sm svg{ width:16px; height:16px; }
-.pay-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 16px; margin-bottom:10px; flex-wrap:wrap; }
-.pay-row .lbl{ font-size:.74rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:2px; }
-.pay-row .val{ font-family:var(--fd); font-size:1.32rem; font-weight:600; color:var(--navy); }
-.copy-btn{ display:inline-flex; align-items:center; gap:7px; font-family:var(--fb); font-weight:700; font-size:.84rem; color:var(--navy); background:var(--gold); border:0; padding:9px 15px; border-radius:100px; cursor:pointer; transition:.25s; flex:none; }
-.copy-btn:hover{ background:var(--gold-2); } .copy-btn.done{ background:#1f8a55; color:#fff; }
-.pay-name{ font-size:.9rem; margin-top:6px; } .pay-name b{ font-weight:700; }
-.pay-note{ text-align:center; color:var(--muted); font-size:.9rem; margin-top:28px; }
-/* QRIS featured */
-.qris-card{ display:grid; grid-template-columns:auto 1fr; gap:34px; align-items:center; background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%); color:#fff; border-radius:var(--radius-lg); padding:34px; margin-bottom:22px; position:relative; overflow:hidden; }
-.qris-card::before{ content:""; position:absolute; top:-45%; right:-8%; width:360px; height:360px; background:radial-gradient(circle,rgba(33,184,214,.30),transparent 70%); pointer-events:none; }
-.qris-card::after{ content:""; position:absolute; bottom:-55%; left:-10%; width:300px; height:300px; background:radial-gradient(circle,rgba(244,182,62,.16),transparent 70%); pointer-events:none; }
-.qris-qr{ background:#fff; padding:15px; border-radius:20px; box-shadow:0 18px 44px rgba(0,0,0,.38); position:relative; z-index:1; }
-.qris-qr img{ display:block; width:206px; height:206px; object-fit:contain; background:#fff; image-rendering:pixelated; }
-.qris-body{ position:relative; z-index:1; }
-.qris-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(33,184,214,.18); color:#8FE6F7; border:1px solid rgba(33,184,214,.38); font-weight:800; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; padding:6px 13px; border-radius:100px; }
-.qris-body h3{ font-family:var(--fd); font-size:1.62rem; line-height:1.14; margin:14px 0 8px; color:#fff; }
-.qris-merchant{ font-weight:800; font-size:1.02rem; color:var(--gold); }
-.qris-nmid{ font-size:.85rem; color:#C6CCE6; margin-top:3px; letter-spacing:.02em; }
-.qris-desc{ font-size:.94rem; color:#D5DAF0; margin:13px 0 16px; max-width:46ch; }
-.qris-apps{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
-.qris-chip{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); border-radius:100px; padding:6px 12px; font-size:.8rem; font-weight:700; color:#EAEDFA; }
-.qris-dl{ display:inline-flex; align-items:center; gap:8px; background:var(--gold); color:var(--navy); font-family:var(--fb); font-weight:800; font-size:.9rem; padding:11px 19px; border-radius:100px; text-decoration:none; transition:.25s; }
-.qris-dl:hover{ background:var(--gold-2); transform:translateY(-2px); }
-.qris-dl svg{ width:17px; height:17px; }
-@media (max-width:640px){ .qris-card{ grid-template-columns:1fr; text-align:center; padding:26px; gap:22px; } .qris-qr{ justify-self:center; } .qris-desc{ margin-inline:auto; } .qris-apps{ justify-content:center; } }
+/* ============ PILLARS ============ */
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pillar{
+  background:var(--navy-900);
+  border:1px solid var(--line-soft);
+  border-radius:var(--radius);
+  padding:30px 24px;
+  transition:transform .3s var(--ease),border-color .3s,background .3s;
+  position:relative;overflow:hidden;
+}
+.pillar::before{content:"";position:absolute;inset:0;background:radial-gradient(140px 90px at 30% 0%,rgba(0,82,255,.14),transparent 70%);opacity:0;transition:opacity .35s}
+.pillar:hover{transform:translateY(-6px);border-color:#2b4a7d}
+.pillar:hover::before{opacity:1}
+.pillar .ico{
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;
+  background:rgba(0,82,255,.1);border:1px solid var(--line);
+}
+.pillar .ico svg{width:26px;height:26px}
+.pillar h3{font-size:17px;margin-bottom:10px}
+.pillar p{font-size:13.5px;color:var(--ink-300)}
+.pillar .num{position:absolute;top:22px;right:24px;font-family:var(--font-mono);font-size:12px;color:#33507f}
+
+/* ============ WHY / STATS ============ */
+#trust{background:linear-gradient(180deg,var(--navy-950),#0a1c38)}
+.why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{
+  background:linear-gradient(160deg,var(--navy-850),var(--navy-900));
+  border:1px solid var(--line-soft);border-radius:var(--radius);padding:26px 24px;
+}
+.stat .n{font-size:clamp(30px,4vw,42px);font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1}
+.stat .n .u{color:var(--blue-bright)}
+.stat .l{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-300);margin-top:12px}
+.why-list{list-style:none;display:flex;flex-direction:column;gap:22px;margin-top:26px}
+.why-list li{display:flex;gap:16px}
+.why-list .b{
+  flex-shrink:0;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(0,82,255,.12);border:1px solid var(--line);
+}
+.why-list h4{color:var(--ink-100);font-size:15.5px;margin-bottom:4px;font-weight:700}
+.why-list p{font-size:13.5px;color:var(--ink-300)}
+
+/* ============ PROCESS ============ */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+.step{position:relative;padding:28px 22px;background:var(--navy-900);border:1px solid var(--line-soft);border-radius:var(--radius)}
+.step .sn{font-family:var(--font-mono);font-size:13px;color:var(--blue-bright);font-weight:700}
+.step h4{font-size:16px;color:var(--ink-100);margin:14px 0 8px}
+.step p{font-size:13px;color:var(--ink-300)}
+.step:not(:last-child)::after{
+  content:"→";position:absolute;right:-16px;top:50%;transform:translateY(-50%);
+  color:#33507f;font-size:20px;z-index:2;
+}
+
+/* ============ PRODUCTS / SHOP ============ */
+#shop{background:linear-gradient(180deg,#0a1c38,var(--navy-950))}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.prod{
+  background:linear-gradient(180deg,var(--navy-850),var(--navy-900));
+  border:1px solid var(--line-soft);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+}
+.prod:hover{transform:translateY(-6px);border-color:#2b4a7d;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.prod-cover{
+  height:158px;position:relative;display:grid;place-items:center;
+  background:radial-gradient(120% 120% at 20% 0%,rgba(0,82,255,.35),transparent 60%),linear-gradient(135deg,#10254a,#0c1c38);
+  border-bottom:1px solid var(--line-soft);
+}
+.prod-cover .kind{
+  position:absolute;top:14px;left:14px;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(10,25,47,.7);border:1px solid var(--line);padding:5px 10px;border-radius:8px;color:var(--cyan);
+}
+.prod-cover .emoji{font-size:46px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.5))}
+.prod-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex-grow:1}
+.prod-body h3{font-size:16.5px;margin-bottom:8px}
+.prod-body p{font-size:13px;color:var(--ink-300);margin-bottom:18px;flex-grow:1}
+.prod-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto}
+.price{font-family:var(--font-mono);font-weight:700;color:#fff;font-size:17px}
+.price small{display:block;font-size:10px;color:var(--ink-300);font-weight:400;letter-spacing:.05em}
+.buy{
+  background:var(--blue);color:#fff;border:none;cursor:pointer;
+  font-family:var(--font-sans);font-weight:600;font-size:13.5px;
+  padding:11px 18px;border-radius:11px;transition:background .2s,transform .2s;
+}
+.buy:hover{background:#0046dd;transform:translateY(-2px)}
+
+/* ============ CTA BAND ============ */
+.cta-band{position:relative;overflow:hidden;border-radius:26px;padding:64px 40px;text-align:center;
+  background:linear-gradient(120deg,#06122a,#0a2a6b);border:1px solid #1b3a72}
+.cta-band::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;filter:blur(120px);background:rgba(0,82,255,.5);top:-160px;left:-80px}
+.cta-band::after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;filter:blur(120px);background:rgba(255,107,0,.28);bottom:-160px;right:-60px}
+.cta-band .in{position:relative;z-index:2;max-width:620px;margin:0 auto}
+.cta-band h2{font-size:clamp(26px,4vw,38px);margin-bottom:14px}
+.cta-band p{color:var(--ink-200);margin-bottom:30px}
+.cta-band .hero-actions{justify-content:center}
 
 /* ============ FOOTER ============ */
-.footer{ background:var(--navy-3); color:#C6CCE6; padding-block:60px 30px; }
-.footer__top{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1.1fr; gap:34px; }
-.footer .logo__txt{ color:#fff; } .footer p{ font-size:.94rem; max-width:34ch; margin-top:14px; }
-.footer h4{ color:#fff; font-family:var(--fb); font-weight:700; font-size:.94rem; margin-bottom:14px; }
-.footer a.lnk{ display:block; padding:6px 0; font-size:.94rem; transition:.25s; } .footer a.lnk:hover{ color:var(--gold); transform:translateX(3px); }
-.footer__pay{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
-.footer__paytxt{ font-size:.86rem; color:#9AA2C6; margin-top:12px; line-height:1.7; }
-.footer__paytxt b{ color:#fff; }
-.socials{ display:flex; gap:11px; margin-top:18px; }
-.socials a{ width:40px; height:40px; border-radius:11px; background:rgba(255,255,255,.07); display:grid; place-items:center; transition:.3s; }
-.socials a:hover{ background:var(--gold); transform:translateY(-3px); }
-.socials svg{ width:18px; height:18px; fill:#fff; } .socials a:hover svg{ fill:var(--navy); }
-.footer__bot{ margin-top:44px; padding-top:22px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.85rem; color:#9AA2C6; }
-.footer__bot a{ color:#9AA2C6; } .footer__bot a:hover{ color:var(--gold); }
+footer{border-top:1px solid var(--line-soft);padding:64px 0 34px;background:var(--navy-950)}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:44px}
+.foot-brand p{color:var(--ink-300);font-size:14px;margin:16px 0 20px;max-width:300px}
+.foot h5{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-300);margin-bottom:18px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.foot ul a{color:var(--ink-200);font-size:14px;transition:color .2s}
+.foot ul a:hover{color:var(--blue-bright)}
+.pay{font-family:var(--font-mono);font-size:12px;color:var(--ink-300);line-height:1.9}
+.pay b{color:var(--ink-100)}
+.foot-bottom{border-top:1px solid var(--line-soft);padding-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-300);font-family:var(--font-mono)}
+.socials{display:flex;gap:10px}
+.socials a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-200);transition:.2s}
+.socials a:hover{border-color:var(--blue-bright);color:#fff;background:rgba(0,82,255,.12)}
 
-/* ============ ANIMASI ============ */
-.reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
-.reveal.in{ opacity:1; transform:none; }
-.reveal[data-d="1"]{ transition-delay:.08s } .reveal[data-d="2"]{ transition-delay:.16s } .reveal[data-d="3"]{ transition-delay:.24s }
+/* ============ MODAL ============ */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;
+  background:rgba(4,10,22,.8);backdrop-filter:blur(6px)}
+.modal.open{display:flex}
+.modal-card{
+  width:100%;max-width:460px;background:linear-gradient(180deg,var(--navy-850),var(--navy-900));
+  border:1px solid var(--line);border-radius:22px;padding:30px;position:relative;
+  animation:pop .3s var(--ease);
+}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}}
+.modal-card .x{position:absolute;top:18px;right:18px;background:none;border:none;color:var(--ink-300);cursor:pointer;font-size:24px;line-height:1}
+.modal-card .x:hover{color:#fff}
+.modal-card h3{font-size:20px;margin-bottom:6px}
+.modal-card .sub{color:var(--ink-300);font-size:13px;margin-bottom:22px}
+.order-summary{background:rgba(0,82,255,.08);border:1px solid rgba(0,82,255,.22);border-radius:14px;padding:16px 18px;margin-bottom:22px}
+.order-summary .r{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.order-summary .r:last-child{margin-bottom:0}
+.order-summary .r span:first-child{color:var(--ink-300)}
+.order-summary .r span:last-child{color:#fff;font-weight:600;text-align:right}
+label.fld{display:block;margin-bottom:16px}
+label.fld .t{font-size:12.5px;color:var(--ink-200);margin-bottom:7px;display:block;font-weight:500}
+.inp{
+  width:100%;background:var(--navy-950);border:1px solid var(--line);border-radius:12px;
+  padding:12px 14px;color:#fff;font-family:var(--font-sans);font-size:14px;transition:border-color .2s;
+}
+.inp:focus{outline:none;border-color:var(--blue-bright);box-shadow:0 0 0 3px rgba(0,82,255,.18)}
+.inp::placeholder{color:#4c5f7d}
+
+/* ============ REVEAL ANIMATION ============ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
 
 /* ============ RESPONSIVE ============ */
-@media (max-width:1040px){ .news-grid{ grid-template-columns:repeat(2,1fr); } .shop-grid{ grid-template-columns:repeat(2,1fr); } .svc-grid{ grid-template-columns:1fr 1fr; } }
-@media (max-width:920px){ .hero__grid{ grid-template-columns:1fr; gap:40px; } }
-@media (max-width:760px){
-  .nav__links, .nav__cta .btn{ display:none; } .burger{ display:block; }
-  .nav__menu-open .nav__links{ display:flex; flex-direction:column; gap:18px; position:absolute; top:72px; left:0; right:0; background:var(--cream); padding:24px; border-bottom:1px solid var(--line); box-shadow:var(--shadow); }
-  .news-grid, .shop-grid, .svc-grid, .pay-grid, .footer__top{ grid-template-columns:1fr; }
-  .footer__top{ gap:26px; }
+@media(max-width:980px){
+  .cards-3,.cards-4,.shop-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .step:nth-child(2)::after{display:none}
+  .why-grid{grid-template-columns:1fr;gap:36px}
+  .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media (prefers-reduced-motion:reduce){ *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
-a:focus-visible, button:focus-visible{ outline:3px solid var(--gold-2); outline-offset:3px; border-radius:8px; }
+@media(max-width:680px){
+  .nav-links{display:none}
+  .nav-links.show{
+    display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--navy-900);border-bottom:1px solid var(--line);padding:8px 0;
+  }
+  .nav-links.show a{padding:14px 24px}
+  .nav-links.show a::after{display:none}
+  .menu-btn{display:grid;place-items:center}
+  .nav-cta .btn.desktop-only{display:none}
+  .cards-3,.cards-4,.shop-grid,.steps{grid-template-columns:1fr}
+  .step::after{display:none}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr}
+  section.block{padding:72px 0}
+  .hero{padding:84px 0 76px}
+  .cta-band{padding:48px 24px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
 
-<!-- ============ TICKER TRENDING ============ -->
-<div class="ticker">
-  <div class="wrap ticker__in">
-    <span class="ticker__tag"><span class="ticker__dot"></span> Trending</span>
-    <div class="ticker__track">
-      <div class="ticker__row" id="tickerRow"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ NAVBAR ============ -->
-<header class="nav" id="nav">
-  <div class="wrap nav__in">
-    <a href="#" class="logo">
-      <span class="logo__dot">G</span>
-      <span class="logo__txt">Gozali Corp<small>Technology</small></span>
-    </a>
-    <nav class="nav__links" id="navLinks">
-      <a href="#berita">Berita</a>
-      <a href="#layanan">Layanan</a>
-      <a href="#produk">Produk</a>
-      <a href="#edukasi">Edukasi</a>
-      <a href="#pembayaran">Pembayaran</a>
+<!-- ================= NAV ================= -->
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="brand"><span class="mark">G</span>GOZALI <span>CORP</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Beranda</a>
+      <a href="#solutions">Solusi Bisnis</a>
+      <a href="#services">4 Pilar Layanan</a>
+      <a href="#trust">Mengapa Kami</a>
+      <a href="#shop">Produk Digital</a>
     </nav>
-    <div class="nav__cta">
-      <a href="https://wa.me/6285600000279?text=Halo%20Gozali%20Corp%20Technology" target="_blank" rel="noopener" class="btn btn--orange">Kontak <span class="arr">→</span></a>
-      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-cta">
+      <a href="https://wa.me/6285600000279" target="_blank" rel="noopener" class="btn btn-blue desktop-only" style="padding:11px 20px">Konsultasi Gratis</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Buka menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </div>
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero__deco"></div>
-  <div class="wrap hero__grid">
-    <div>
-      <span class="hero__badge reveal"><span style="color:var(--ai)">●</span> Portal teknologi &amp; <b>studio digital</b></span>
-      <h1 class="reveal" data-d="1">Teknologi terbaru dunia, <span class="hl">dikurasi</span> untukmu.</h1>
-      <p class="hero__lead reveal" data-d="2">Gozali Corp Technology mengabarkan berita tech terbaru &amp; viral, sekaligus membangun AI Agent, Smart Tools, konten medsos, automation, dan edukasi teknologi — plus ebook siap pakai.</p>
-      <div class="hero__actions reveal" data-d="3">
-        <a href="#berita" class="btn btn--gold">Baca berita <span class="arr">→</span></a>
-        <a href="#layanan" class="btn btn--light">Lihat layanan</a>
-      </div>
-      <div class="hero__stats reveal" data-d="3">
-        <div><b>500+</b><span>Artikel teknologi</span></div>
-        <div><b>30+</b><span>AI Agent &amp; tools</span></div>
-        <div><b>4.9/5</b><span>Rating pembaca</span></div>
-      </div>
+<!-- ================= HERO ================= -->
+<section id="home" class="hero">
+  <div class="hero-bg">
+    <div class="grid-lines"></div>
+    <div class="orb orb-blue"></div>
+    <div class="orb orb-orange"></div>
+    <div class="orb orb-cyan"></div>
+    <svg class="hero-net" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice">
+      <g stroke="#22D3EE" stroke-opacity=".28" stroke-width="1">
+        <line x1="200" y1="150" x2="420" y2="270"/>
+        <line x1="420" y1="270" x2="640" y2="180"/>
+        <line x1="640" y1="180" x2="880" y2="300"/>
+        <line x1="880" y1="300" x2="1010" y2="180"/>
+        <line x1="420" y1="270" x2="560" y2="440"/>
+        <line x1="640" y1="180" x2="760" y2="420"/>
+      </g>
+      <g fill="#3A78FF">
+        <circle class="node" cx="200" cy="150" r="4"/>
+        <circle class="node" cx="420" cy="270" r="5"/>
+        <circle class="node" cx="640" cy="180" r="4"/>
+        <circle class="node" cx="880" cy="300" r="5"/>
+        <circle class="node" cx="1010" cy="180" r="4"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="wrap hero-inner">
+    <span class="badge"><span class="dot"></span>ONE-STOP IT SOLUTION &amp; DIGITAL PRODUCTION</span>
+    <h1>Transformasikan Bisnis Anda dengan<br><span class="grad">Ekosistem Digital Terintegrasi</span></h1>
+    <p class="lead">Kami membantu perorangan, UMKM, hingga korporasi membangun sistem otomatis, produk digital premium, dan produksi konten berkualitas tinggi yang mendorong efisiensi serta pertumbuhan nyata.</p>
+    <div class="hero-actions">
+      <a href="#solutions" class="btn btn-orange">Mulai Transformasi Digital
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#services" class="btn btn-ghost">Lihat Layanan Kami</a>
     </div>
-    <div class="feat reveal" data-d="2" id="heroFeat">
-      <div class="feat__bg"><div class="feat__deco"></div></div>
-      <div class="feat__body">
-        <span class="chip k-AI">AI</span>
-        <h3>Memuat sorotan utama…</h3>
-        <p>Berita unggulan akan tampil di sini.</p>
+    <div class="hero-trust">
+      <span>4 Pilar Layanan Terintegrasi</span>
+      <span>Support via WhatsApp</span>
+      <span>Solusi Skala Perorangan–Korporat</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOLUTIONS ================= -->
+<section id="solutions" class="block">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Pilih Jalur Anda</span>
+      <h2>Solusi Tepat untuk Setiap Skala Kebutuhan</h2>
+      <p>Pilih profil Anda di bawah ini untuk mendapatkan solusi yang dirancang khusus untuk masalah dan tujuan Anda.</p>
+    </div>
+
+    <div class="cards-3">
+      <!-- Perorangan -->
+      <div class="sol-card reveal">
+        <div class="idx bg-cyan">01</div>
+        <h3>Perorangan &amp; Kreator</h3>
+        <p>Jangan biarkan waktu Anda habis untuk hal teknis yang repetitif. Tingkatkan keahlian, percepat alur kerja, dan bangun aset digital Anda secara instan.</p>
+        <ul class="feat">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> E-Book &amp; panduan teknis terapan</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Smart tools &amp; template siap pakai</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Aset digital pendukung konten</li>
+        </ul>
+        <a href="#shop" class="btn btn-ghost btn-block">Jelajahi Produk Digital</a>
+      </div>
+
+      <!-- UMKM -->
+      <div class="sol-card ring-orange reveal">
+        <span class="tag-rec">Rekomendasi</span>
+        <div class="idx bg-orange">02</div>
+        <h3>UMKM &amp; Bisnis Berkembang</h3>
+        <p>Siap naik kelas? Digitalkan operasional toko Anda dan bangun kehadiran online profesional tanpa perlu anggaran miliaran rupiah.</p>
+        <ul class="feat">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Jasa produksi konten kreatif</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Website profil &amp; toko online instan</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Sistem otomatisasi admin &amp; chat</li>
+        </ul>
+        <a href="https://wa.me/6285600000279" target="_blank" rel="noopener" class="btn btn-orange btn-block">Konsultasi UMKM via WhatsApp</a>
+      </div>
+
+      <!-- Korporat -->
+      <div class="sol-card reveal">
+        <div class="idx bg-blue">03</div>
+        <h3>Perusahaan &amp; Instansi Resmi</h3>
+        <p>Tingkatkan efisiensi perusahaan dengan infrastruktur IT yang kokoh, otomatisasi sistem internal yang aman, dan integrasi data menyeluruh.</p>
+        <ul class="feat">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A78FF" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> One-stop IT enterprise solution</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A78FF" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Integrasi API &amp; otomatisasi sistem</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A78FF" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Kontrak maintenance &amp; keamanan data</li>
+        </ul>
+        <a href="https://wa.me/6285600000279" target="_blank" rel="noopener" class="btn btn-blue btn-block">Minta Penawaran Resmi (RFQ)</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ BERITA ============ -->
-<section class="section" id="berita">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow reveal">Berita &amp; sorotan</span>
-        <h2 class="h2 reveal" data-d="1" style="margin-top:12px;">Teknologi terbaru &amp; viral</h2>
-      </div>
-      <p class="lead reveal" data-d="2">Kabar AI, gadget, startup, blockchain, keamanan siber, sampai yang lagi ramai — kami rangkum ringkas.</p>
-    </div>
-    <div class="topics reveal">
-      <span>🤖 AI</span><span>⛓ Blockchain</span><span>📱 Gadget</span><span>🚀 Startup</span><span>🔐 Cybersecurity</span><span>🔥 Viral</span>
-    </div>
-    <div class="news-grid" id="newsGrid"></div>
-    <p class="shop-status" id="newsStatus" style="color:var(--muted)">Memuat berita…</p>
-  </div>
-</section>
+<hr class="divider">
 
-<!-- ============ LAYANAN ============ -->
-<section class="section services" id="layanan">
+<!-- ================= 4 PILLARS ================= -->
+<section id="services" class="block">
   <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow reveal">Layanan</span>
-        <h2 class="h2 reveal" data-d="1" style="margin-top:12px;">Dari ide sampai sistem<br>yang bekerja sendiri</h2>
-      </div>
-      <p class="lead reveal" data-d="2">Selain media, kami studio digital: bikin AI, konten, otomasi, dan edukasi teknologi.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow">Keahlian Inti Kami</span>
+      <h2>4 Pilar Solusi Digital</h2>
+      <p>Setiap layanan dalam ekosistem dikerjakan oleh tim ahli terdedikasi untuk memberikan performa terbaik.</p>
     </div>
-    <div class="svc-grid">
-      <article class="svc reveal" data-d="1">
-        <div class="svc__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3.4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></div>
-        <h3>Content Creator Medsos</h3>
-        <p>Konten foto, video, &amp; reels untuk Instagram, X, Facebook, dan TikTok — plus caption &amp; jadwal.</p>
-      </article>
-      <article class="svc reveal" data-d="2">
-        <div class="svc__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V5M9 3.5h6"/><circle cx="9.5" cy="13" r="1"/><circle cx="14.5" cy="13" r="1"/><path d="M2 13v2M22 13v2"/></svg></div>
-        <h3>Smart Tools &amp; AI Agent</h3>
-        <p>Chatbot, auto-reply, asisten penjualan, dan aplikasi mini pintar sesuai kebutuhan bisnismu.</p>
-      </article>
-      <article class="svc reveal" data-d="3">
-        <div class="svc__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
-        <h3>AI Automation</h3>
-        <p>Otomasi alur kerja: auto-posting, balas pesan, kumpulkan lead, sampai laporan rutin 24/7.</p>
-      </article>
-      <article class="svc reveal" data-d="3">
-        <div class="svc__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></div>
-        <h3>Edukasi Teknologi</h3>
-        <p>Kelas &amp; panduan praktis soal AI, tools, dan tren teknologi terbaru — bahasa yang mudah dipahami.</p>
-      </article>
-    </div>
-  </div>
-</section>
 
-<!-- ============ EDUKASI ============ -->
-<section class="section edu" id="edukasi">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow reveal">Edukasi</span>
-        <h2 class="h2 reveal" data-d="1" style="margin-top:12px;">Belajar teknologi terbaru</h2>
-      </div>
-      <p class="lead reveal" data-d="2">Kelas &amp; panduan praktis soal AI, tools, dan tren teknologi — dari pemula sampai lanjut.</p>
-    </div>
-    <div class="news-grid" id="eduGrid"></div>
-    <p class="shop-status" id="eduStatus" style="color:var(--muted)">Memuat materi edukasi…</p>
-  </div>
-</section>
-
-<!-- ============ PRODUK / EBOOK ============ -->
-<section class="section shop" id="produk">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow reveal">Toko</span>
-        <h2 class="h2 reveal" data-d="1" style="margin-top:12px;">Ebook &amp; produk digital</h2>
-      </div>
-      <p class="lead reveal" data-d="2">Pesan lewat WhatsApp, langsung dibantu. Katalog di bawah bisa kami perbarui kapan saja.</p>
-    </div>
-    <div class="shop-grid" id="katalogGrid"></div>
-    <p class="shop-status" id="katalogStatus">Memuat produk…</p>
-  </div>
-</section>
-
-<!-- ============ NEWSLETTER ============ -->
-<section class="section news-cta">
-  <div class="wrap">
-    <div class="box reveal">
-      <h2>Jangan ketinggalan teknologi terbaru.</h2>
-      <p>Rangkuman berita tech &amp; tips AI langsung ke WhatsApp kamu. Gratis.</p>
-      <div class="form">
-        <input type="email" id="subEmail" placeholder="Email atau nomor WhatsApp kamu" aria-label="Email" />
-        <a href="https://wa.me/6285600000279?text=Halo%2C%20saya%20mau%20langganan%20update%20teknologi" target="_blank" rel="noopener" class="btn btn--gold">Langganan <span class="arr">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PEMBAYARAN ============ -->
-<section class="section pay" id="pembayaran">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow reveal">Pembayaran</span>
-        <h2 class="h2 reveal" data-d="1" style="margin-top:12px;">Bayar mudah, banyak pilihan</h2>
-      </div>
-      <p class="lead reveal" data-d="2">Pilih e-wallet atau transfer bank. Setelah bayar, konfirmasi ke WhatsApp kami.</p>
-    </div>
-    <div class="qris-card reveal">
-      <div class="qris-qr">
-        <img id="qrisImg" src="data:image/png;base64,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" alt="QRIS M Gozali Salim, Digital & Kreatif — scan untuk membayar" width="206" height="206" />
-      </div>
-      <div class="qris-body">
-        <span class="qris-badge">✦ QRIS · Satu QR untuk semua</span>
-        <h3>Scan &amp; bayar pakai QRIS</h3>
-        <p class="qris-merchant" id="qrisMerchant">M GOZALI SALIM, DIGITAL &amp; KREATIF</p>
-        <p class="qris-nmid" id="qrisNmid">NMID: ID1026545885604 · GPN</p>
-        <p class="qris-desc">Buka aplikasi apa pun yang berlogo QRIS, scan kode di samping, lalu bayar. Berlaku untuk semua e-wallet &amp; m-banking.</p>
-        <div class="qris-apps">
-          <span class="qris-chip">DANA</span>
-          <span class="qris-chip">OVO</span>
-          <span class="qris-chip">GoPay</span>
-          <span class="qris-chip">ShopeePay</span>
-          <span class="qris-chip">LinkAja</span>
-          <span class="qris-chip">m-Banking</span>
+    <div class="cards-4">
+      <div class="pillar reveal">
+        <span class="num">01</span>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3A78FF" stroke-width="1.8"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M10 9l5 3-5 3V9z" fill="#3A78FF" stroke="none"/><path d="M7 21h10"/></svg>
         </div>
-        <a class="qris-dl" id="qrisDownload" href="data:image/png;base64,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" download="QRIS-Gozali-Corp-Technology.png">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-          Simpan kode QR
-        </a>
+        <h3>Digital Production</h3>
+        <p>Dari konsep hingga konversi. Kami memproduksi video iklan komersial, aset visual, dan konten kreatif yang menceritakan nilai brand Anda.</p>
+      </div>
+
+      <div class="pillar reveal">
+        <span class="num">02</span>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-2.7-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 4.6 15H4.4a2 2 0 1 1 0-4h.2a1.6 1.6 0 0 0 1.1-2.7l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 11 4.6V4.4a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1A1.6 1.6 0 0 0 21 11h.2"/></svg>
+        </div>
+        <h3>Smart Tools &amp; Automation</h3>
+        <p>Pangkas jam kerja yang terbuang. Kami merancang bot, sistem makro, dan integrasi automasi cerdas yang berjalan otomatis 24/7.</p>
+      </div>
+
+      <div class="pillar reveal">
+        <span class="num">03</span>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3A78FF" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>One-Stop IT Solution</h3>
+        <p>Arsitektur teknologi tanpa celah. Kami membangun ekosistem aplikasi mobile, website kustom, hingga tata kelola komputasi awan (cloud).</p>
+      </div>
+
+      <div class="pillar reveal">
+        <span class="num">04</span>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="1.8"><path d="M4 4h9a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H4z"/><path d="M20 4h-2a3 3 0 0 0-2 1v14a2.5 2.5 0 0 1 2.5-2.5H20z"/></svg>
+        </div>
+        <h3>E-Book &amp; Digital Store</h3>
+        <p>Akselerasi ilmu dan instrumen kerja. Etalase kami menyediakan panduan premium dan skrip siap pakai yang siap unduh.</p>
       </div>
     </div>
-    <div class="pay-grid">
-      <article class="pay-card reveal" data-d="1">
-        <div class="pay-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="16" height="12" rx="3"/><path d="M18 9h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2"/><circle cx="18.5" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg></div>
-        <h3>E-Wallet</h3>
-        <p class="k">DANA, OVO, GoPay &amp; LinkAja — ke satu nomor.</p>
-        <div class="paylogos">
-          <span class="pm pm-dana"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#108EE9"/><path d="M6.5 6h3.2a4 4 0 0 1 0 8H6.5z" fill="#fff"/></svg>DANA</span>
-          <span class="pm pm-ovo"><svg viewBox="0 0 20 20"><ellipse cx="10" cy="10" rx="8.5" ry="6" fill="none" stroke="#4B2E83" stroke-width="3"/></svg>OVO</span>
-          <span class="pm pm-gopay"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="#00A6C4" stroke-width="3"/><path d="M8 7l4 3-4 3z" fill="#00A6C4"/></svg>gopay</span>
-          <span class="pm pm-link"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#E11F26"/><rect x="8.7" y="4.5" width="2.6" height="7" rx="1.3" fill="#fff"/><circle cx="10" cy="14.5" r="1.5" fill="#fff"/></svg>LinkAja</span>
-        </div>
-        <div class="pay-row">
-          <div><span class="lbl">Nomor tujuan</span><span class="val" id="ewVal">0856 0000 0279</span></div>
-          <button class="copy-btn" type="button" id="ewCopy" data-copy="085600000279">⧉ Salin</button>
-        </div>
-        <p class="pay-name">a.n. <b id="ewName">M Gozali Salim</b></p>
-      </article>
-      <article class="pay-card reveal" data-d="2">
-        <div class="pay-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18M5 10V20M19 10V20M3 20h18M12 3 3 8h18l-9-5z"/><path d="M9 13v4M15 13v4"/></svg></div>
-        <h3>Transfer Bank</h3>
-        <div class="paylogos">
-          <span class="pm pm-mandiri"><svg viewBox="0 0 22 20"><path d="M2 13c3-6 6 4 9-1s6-8 9-2" fill="none" stroke="#FFB81C" stroke-width="3" stroke-linecap="round"/></svg>mandiri</span>
-        </div>
-        <div class="pay-row">
-          <div><span class="lbl" id="bankLbl">Bank Mandiri — No. Rekening</span><span class="val" id="bankVal">1020004981236</span></div>
-          <button class="copy-btn" type="button" id="bankCopy" data-copy="1020004981236">⧉ Salin</button>
-        </div>
-        <p class="pay-name">a.n. <b id="bankName">M Gozali Salim</b></p>
-      </article>
-    </div>
-    <p class="pay-note reveal">Sudah bayar? <a id="waLink" href="https://wa.me/6285600000279?text=Halo%20Gozali%2C%20saya%20sudah%20transfer%20pembayaran" target="_blank" rel="noopener" style="color:var(--orange-2);font-weight:700;">Konfirmasi via WhatsApp →</a></p>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="footer" id="kontak">
+<!-- ================= WHY US / STATS ================= -->
+<section id="trust" class="block">
   <div class="wrap">
-    <div class="footer__top">
-      <div>
-        <a href="#" class="logo"><span class="logo__dot">G</span><span class="logo__txt">Gozali Corp<small>Technology</small></span></a>
-        <p>Portal teknologi terbaru &amp; viral dunia, sekaligus studio digital: AI, konten, automation, edukasi, dan ebook.</p>
+    <div class="why-grid">
+      <div class="reveal">
+        <span class="eyebrow">Mengapa Gozali Corp</span>
+        <h2 style="font-size:clamp(26px,4vw,38px);margin:16px 0 14px">Satu Mitra, Solusi Menyeluruh</h2>
+        <p style="color:var(--ink-300);font-size:15px">Tidak perlu lagi mengelola banyak vendor. Kami menyatukan produksi, teknologi, dan otomatisasi dalam satu ekosistem yang saling terhubung.</p>
+        <ul class="why-list">
+          <li>
+            <span class="b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3A78FF" stroke-width="2"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/></svg></span>
+            <div><h4>Ekosistem Terintegrasi</h4><p>Produksi, IT, dan automasi dirancang agar bekerja sebagai satu sistem, bukan potongan terpisah.</p></div>
+          </li>
+          <li>
+            <span class="b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span>
+            <div><h4>Eksekusi Cepat &amp; Terukur</h4><p>Alur kerja yang efisien dengan hasil yang bisa dipantau dan dievaluasi di setiap tahap.</p></div>
+          </li>
+          <li>
+            <span class="b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <div><h4>Dukungan Berkelanjutan</h4><p>Konsultasi dan support langsung via WhatsApp, dari sebelum hingga sesudah proyek berjalan.</p></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="stat-grid reveal">
+        <div class="stat"><div class="n">4<span class="u">+</span></div><div class="l">Pilar Layanan Terintegrasi</div></div>
+        <div class="stat"><div class="n">24/7</div><div class="l">Sistem Otomatisasi</div></div>
+        <div class="stat"><div class="n">3</div><div class="l">Skala: Perorangan–Korporat</div></div>
+        <div class="stat"><div class="n">100<span class="u">%</span></div><div class="l">Fokus Solusi Terapan</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= PROCESS ================= -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cara Kerja Kami</span>
+      <h2>4 Langkah Menuju Solusi Digital</h2>
+      <p>Proses yang transparan dan terstruktur, dari ide pertama hingga peluncuran dan dukungan.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="sn">01</span><h4>Konsultasi</h4><p>Kami dengarkan kebutuhan dan tujuan Anda melalui WhatsApp, gratis dan tanpa ikatan.</p></div>
+      <div class="step reveal"><span class="sn">02</span><h4>Perencanaan</h4><p>Menyusun solusi, ruang lingkup, dan penawaran yang sesuai skala serta anggaran Anda.</p></div>
+      <div class="step reveal"><span class="sn">03</span><h4>Produksi</h4><p>Tim ahli mengeksekusi proyek dengan pembaruan berkala di setiap tahap penting.</p></div>
+      <div class="step reveal"><span class="sn">04</span><h4>Peluncuran &amp; Support</h4><p>Serah terima hasil, pelatihan singkat, dan dukungan lanjutan agar sistem berjalan lancar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTS / SHOP ================= -->
+<section id="shop" class="block">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Etalase Digital</span>
+      <h2>Produk Digital Premium</h2>
+      <p>Panduan, template, dan tools siap pakai untuk mempercepat pekerjaan Anda. Klik "Beli" untuk melanjutkan pemesanan via WhatsApp.</p>
+    </div>
+
+    <!-- CATATAN: Ubah judul, deskripsi, dan harga produk di bawah sesuai katalog Anda. -->
+    <div class="shop-grid">
+      <div class="prod reveal">
+        <div class="prod-cover"><span class="kind">E-Book</span><span class="emoji">🧠</span></div>
+        <div class="prod-body">
+          <h3>Jago Prompt AI</h3>
+          <p>Panduan lengkap menyusun prompt efektif untuk hasil AI yang maksimal, disertai contoh terapan.</p>
+          <div class="prod-foot">
+            <div class="price">Rp 49.000<small>Sekali bayar</small></div>
+            <button class="buy" onclick="openModal('E-Book: Jago Prompt AI','Rp 49.000')">Beli</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod reveal">
+        <div class="prod-cover"><span class="kind">E-Book</span><span class="emoji">💰</span></div>
+        <div class="prod-body">
+          <h3>Cuan dari AI</h3>
+          <p>Strategi memanfaatkan AI untuk menghasilkan pendapatan digital, dari ide hingga eksekusi nyata.</p>
+          <div class="prod-foot">
+            <div class="price">Rp 59.000<small>Sekali bayar</small></div>
+            <button class="buy" onclick="openModal('E-Book: Cuan dari AI','Rp 59.000')">Beli</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod reveal">
+        <div class="prod-cover"><span class="kind">Bundle</span><span class="emoji">📚</span></div>
+        <div class="prod-body">
+          <h3>Bundle Seri GCT-AI</h3>
+          <p>Paket hemat berisi seluruh seri E-Book AI terbitan Gozali Corp Technology dalam satu unduhan.</p>
+          <div class="prod-foot">
+            <div class="price">Rp 199.000<small>Hemat 40%</small></div>
+            <button class="buy" onclick="openModal('Bundle Seri GCT-AI (E-Book Lengkap)','Rp 199.000')">Beli</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod reveal">
+        <div class="prod-cover"><span class="kind">Smart Tools</span><span class="emoji">⚙️</span></div>
+        <div class="prod-body">
+          <h3>Template Otomasi Admin</h3>
+          <p>Kumpulan template &amp; skrip otomatisasi untuk mempercepat pekerjaan admin dan operasional harian.</p>
+          <div class="prod-foot">
+            <div class="price">Rp 79.000<small>Sekali bayar</small></div>
+            <button class="buy" onclick="openModal('Template Otomasi Admin','Rp 79.000')">Beli</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod reveal">
+        <div class="prod-cover"><span class="kind">Jasa</span><span class="emoji">🌐</span></div>
+        <div class="prod-body">
+          <h3>Paket Website Profil Instan</h3>
+          <p>Website profil bisnis profesional yang siap tampil online, cocok untuk UMKM yang ingin naik kelas.</p>
+          <div class="prod-foot">
+            <div class="price">Mulai 350K<small>Per proyek</small></div>
+            <button class="buy" onclick="openModal('Paket Website Profil Instan','Mulai Rp 350.000')">Pesan</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod reveal">
+        <div class="prod-cover"><span class="kind">Jasa</span><span class="emoji">🎬</span></div>
+        <div class="prod-body">
+          <h3>Produksi Video Iklan</h3>
+          <p>Produksi video iklan komersial &amp; konten kreatif untuk memperkuat brand dan mendorong konversi.</p>
+          <div class="prod-foot">
+            <div class="price">Custom<small>Sesuai brief</small></div>
+            <button class="buy" onclick="openModal('Jasa Produksi Video Iklan','Custom (Konsultasi)')">Konsultasi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div class="in">
+        <span class="eyebrow" style="justify-content:center">Siap Memulai?</span>
+        <h2 style="margin-top:16px">Wujudkan Transformasi Digital Anda Hari Ini</h2>
+        <p>Konsultasikan kebutuhan Anda secara gratis. Tim kami siap membantu menemukan solusi yang tepat untuk skala bisnis Anda.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/6285600000279" target="_blank" rel="noopener" class="btn btn-orange">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.26-.1-.45-.15-.65.15s-.75.95-.9 1.15-.32.22-.6.07a8.2 8.2 0 0 1-2.4-1.48 9 9 0 0 1-1.67-2.07c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.65-1.57-.9-2.15-.24-.56-.48-.48-.65-.49h-.56c-.2 0-.5.07-.77.37-.26.3-1 .98-1 2.4s1.03 2.78 1.17 2.97c.15.2 2.02 3.08 4.9 4.32.68.3 1.22.47 1.63.6.68.22 1.31.19 1.8.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12 2a10 10 0 0 0-8.6 15.05L2 22l5.05-1.32A10 10 0 1 0 12 2z"/></svg>
+            Chat WhatsApp
+          </a>
+          <a href="mailto:gozalitechnology@gmail.com" class="btn btn-ghost">Email Penawaran Resmi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#home" class="brand"><span class="mark">G</span>GOZALI <span>CORP</span></a>
+        <p>Solusi infrastruktur IT, otomatisasi sistem, dan produksi media kreatif tepercaya di Indonesia.</p>
         <div class="socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.2 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 2.18a4.02 4.02 0 1 1 0 8.04 4.02 4.02 0 0 1 0-8.04zm6.45-.2a1.45 1.45 0 1 1-2.9 0 1.45 1.45 0 0 1 2.9 0z"/></svg></a>
-          <a href="https://wa.me/6285600000279" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.7 13.98c-.24.67-1.4 1.28-1.93 1.36-.53.08-1.02.11-1.83-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2.01.89 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.36-.23.61-.14.25.09 1.6.75 1.87.89.27.14.45.21.52.32.07.11.07.64-.17 1.31z"/></svg></a>
-          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.96 6.82H.93l7.73-8.84L.5 2.25h6.82l4.71 6.23 5.42-6.23zm-1.16 17.52h1.83L7.01 4.12H5.05l12.03 15.65z"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.01-2.82h-3.1v12.36a2.49 2.49 0 0 1-2.49 2.49 2.49 2.49 0 0 1-2.49-2.49 2.49 2.49 0 0 1 3.27-2.37V9.79a5.58 5.58 0 0 0-.78-.05 5.59 5.59 0 0 0-5.59 5.59A5.59 5.59 0 0 0 10 20.92a5.59 5.59 0 0 0 5.59-5.59V8.99a7.36 7.36 0 0 0 4.33 1.39V7.27a4.28 4.28 0 0 1-3.32-1.45z"/></svg></a>
+          <a href="https://wa.me/6285600000279" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.26-.1-.45-.15-.65.15s-.75.95-.9 1.15-.32.22-.6.07a8.2 8.2 0 0 1-2.4-1.48 9 9 0 0 1-1.67-2.07c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.65-1.57-.9-2.15-.24-.56-.48-.48-.65-.49h-.56c-.2 0-.5.07-.77.37-.26.3-1 .98-1 2.4s1.03 2.78 1.17 2.97c.15.2 2.02 3.08 4.9 4.32.68.3 1.22.47 1.63.6.68.22 1.31.19 1.8.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12 2a10 10 0 0 0-8.6 15.05L2 22l5.05-1.32A10 10 0 1 0 12 2z"/></svg></a>
+          <a href="mailto:gozalitechnology@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
         </div>
       </div>
-      <div>
-        <h4>Media</h4>
-        <a class="lnk" href="#berita">Berita Terbaru</a>
-        <a class="lnk" href="#berita">AI &amp; Gadget</a>
-        <a class="lnk" href="#berita">Startup &amp; Blockchain</a>
-        <a class="lnk" href="#edukasi">Edukasi Teknologi</a>
+
+      <div class="foot">
+        <h5>Navigasi</h5>
+        <ul>
+          <li><a href="#solutions">Solusi Bisnis</a></li>
+          <li><a href="#services">4 Pilar Layanan</a></li>
+          <li><a href="#trust">Mengapa Kami</a></li>
+          <li><a href="#shop">Produk Digital</a></li>
+        </ul>
       </div>
-      <div>
-        <h4>Layanan</h4>
-        <a class="lnk" href="#layanan">Smart Tools &amp; AI Agent</a>
-        <a class="lnk" href="#layanan">Content Creator</a>
-        <a class="lnk" href="#layanan">AI Automation</a>
-        <a class="lnk" href="#produk">Ebook &amp; Produk</a>
+
+      <div class="foot">
+        <h5>Kontak</h5>
+        <ul>
+          <li><a href="https://wa.me/6285600000279" target="_blank" rel="noopener">WhatsApp CS</a></li>
+          <li><a href="mailto:gozalitechnology@gmail.com">Email Penawaran</a></li>
+          <li><a href="#shop">Etalase Produk</a></li>
+        </ul>
       </div>
-      <div>
-        <h4>Kontak &amp; Pembayaran</h4>
-        <a class="lnk" href="mailto:gozalitechnology@gmail.com">gozalitechnology@gmail.com</a>
-        <a class="lnk" href="tel:+6285600000279">0856 0000 0279</a>
-        <div class="footer__pay">
-          <span class="pm pm--sm" style="color:#0E1A40"><svg viewBox="0 0 20 20"><rect x="2" y="2" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><rect x="12" y="2" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><rect x="2" y="12" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><rect x="12" y="12" width="2.5" height="2.5" fill="currentColor"/><rect x="15.5" y="15.5" width="2.5" height="2.5" fill="currentColor"/></svg>QRIS</span>
-          <span class="pm pm--sm pm-dana"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#108EE9"/><path d="M6.5 6h3.2a4 4 0 0 1 0 8H6.5z" fill="#fff"/></svg>DANA</span>
-          <span class="pm pm--sm pm-ovo"><svg viewBox="0 0 20 20"><ellipse cx="10" cy="10" rx="8.5" ry="6" fill="none" stroke="#4B2E83" stroke-width="3"/></svg>OVO</span>
-          <span class="pm pm--sm pm-gopay"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="#00A6C4" stroke-width="3"/><path d="M8 7l4 3-4 3z" fill="#00A6C4"/></svg>gopay</span>
-          <span class="pm pm--sm pm-link"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#E11F26"/><rect x="8.7" y="4.5" width="2.6" height="7" rx="1.3" fill="#fff"/><circle cx="10" cy="14.5" r="1.5" fill="#fff"/></svg>LinkAja</span>
-          <span class="pm pm--sm pm-mandiri"><svg viewBox="0 0 22 20"><path d="M2 13c3-6 6 4 9-1s6-8 9-2" fill="none" stroke="#FFB81C" stroke-width="3" stroke-linecap="round"/></svg>mandiri</span>
-        </div>
-        <p class="footer__paytxt">QRIS (semua app) · E-wallet ke <b>0856 0000 0279</b><br>Mandiri <b>1020004981236</b> a.n. M Gozali Salim</p>
+
+      <div class="foot">
+        <h5>Metode Pembayaran</h5>
+        <p class="pay">
+          <b>E-Wallet:</b> DANA / OVO / GoPay / LinkAja<br>
+          <b>Bank Mandiri:</b> 1020004981236<br>
+          a.n. M Gozali Salim
+        </p>
       </div>
     </div>
-    <div class="footer__bot">
-      <span>© 2026 Gozali Corp Technology. Semua hak dilindungi.</span>
-      <span>Kebijakan Privasi · Syarat &amp; Ketentuan · <a href="admin.html">Panel Admin</a></span>
+
+    <div class="foot-bottom">
+      <span>© 2026 Gozali Corp Technology. Seluruh Hak Cipta Dilindungi.</span>
+      <span>gozalicorp.my.id</span>
     </div>
   </div>
 </footer>
 
+<!-- ================= ORDER MODAL ================= -->
+<div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <button class="x" onclick="closeModal()" aria-label="Tutup">×</button>
+    <h3 id="modalTitle">Formulir Pembelian</h3>
+    <p class="sub">Lengkapi data Anda. Konfirmasi &amp; tautan unduhan dikirim via WhatsApp.</p>
+
+    <div class="order-summary">
+      <div class="r"><span>Produk</span><span id="sumName">—</span></div>
+      <div class="r"><span>Harga</span><span id="sumPrice">—</span></div>
+    </div>
+
+    <label class="fld"><span class="t">Nama Lengkap</span>
+      <input class="inp" type="text" id="clientName" placeholder="Nama Anda">
+    </label>
+    <label class="fld"><span class="t">Email</span>
+      <input class="inp" type="email" id="clientEmail" placeholder="email@contoh.com">
+    </label>
+
+    <button class="btn btn-orange btn-block" onclick="sendToWhatsApp()">
+      Lanjutkan Pembayaran via WhatsApp
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</div>
+
 <script>
-/* navbar scrolled */
-const nav=document.getElementById('nav');
-const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>12);
-onScroll(); addEventListener('scroll',onScroll,{passive:true});
-/* burger */
-const burger=document.getElementById('burger');
-burger.addEventListener('click',()=>{ const o=nav.classList.toggle('nav__menu-open'); burger.setAttribute('aria-expanded',o); });
-document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('nav__menu-open')));
-/* reveal */
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ---- Config ---- */
+const WA_NUMBER = "6285600000279";
 
-/* ---------- helper ---------- */
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const catColors={AI:'#21B8D6',Blockchain:'#F4B63E',Gadget:'#F97316',Startup:'#1FA971',Cybersecurity:'#E4572E',Viral:'#C2317E'};
-const NEWS_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4"><path d="M4 5h13v14H6a2 2 0 0 1-2-2V5z"/><path d="M17 8h3v9a2 2 0 0 1-2 2M7 8h6M7 11h6M7 14h4"/></svg>';
+/* ---- Mobile menu ---- */
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('show')));
 
-/* ---------- BERITA (news.json) ---------- */
-(function(){
-  const grid=document.getElementById('newsGrid'), status=document.getElementById('newsStatus'),
-        feat=document.getElementById('heroFeat'), ticker=document.getElementById('tickerRow');
-  const DEFAULT_NEWS=[
-    {judul:"AI Agent makin pintar: kini bisa kerjakan tugas multi-langkah sendiri",kategori:"AI",ringkasan:"Model terbaru mampu merencanakan dan mengeksekusi tugas kompleks tanpa banyak arahan manusia.",tanggal:"2026-07-06",baca:4,img:"",link:"#"},
-    {judul:"Chip AI generasi baru bikin laptop makin ngebut & hemat daya",kategori:"Gadget",ringkasan:"Prosesor dengan NPU besar mendorong fitur AI berjalan langsung di perangkat.",tanggal:"2026-07-05",baca:3,img:"",link:"#"},
-    {judul:"Startup lokal tembus pendanaan besar berkat produk AI",kategori:"Startup",ringkasan:"Gelombang investasi mengalir ke perusahaan yang memanfaatkan otomasi cerdas.",tanggal:"2026-07-04",baca:5,img:"",link:"#"},
-    {judul:"Tren keamanan siber 2026: serangan makin canggih, pertahanan pakai AI",kategori:"Cybersecurity",ringkasan:"Perusahaan beralih ke deteksi ancaman berbasis machine learning.",tanggal:"2026-07-03",baca:6,img:"",link:"#"},
-    {judul:"Blockchain dipakai untuk verifikasi konten dan lawan hoaks",kategori:"Blockchain",ringkasan:"Teknologi buku besar terdesentralisasi diuji untuk menandai keaslian media.",tanggal:"2026-07-02",baca:4,img:"",link:"#"},
-    {judul:"Tools AI ini lagi viral: bikin video hanya dari teks",kategori:"Viral",ringkasan:"Warganet ramai mencoba pembuatan video instan yang hasilnya makin realistis.",tanggal:"2026-07-01",baca:3,img:"",link:"#"}
-  ];
-  const fmt=d=>{try{return new Date(d).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'});}catch(e){return d;}};
-  function cover(p){ const c=catColors[p.kategori]||'#16265C'; return p.img?'<img src="'+p.img+'" alt="'+esc(p.judul)+'">':NEWS_ICON; }
-  function bg(p){ const c=catColors[p.kategori]||'#16265C'; return 'linear-gradient(135deg,'+c+',#16265C)'; }
-  function renderFeat(p){
-    feat.querySelector('.feat__bg').style.background=bg(p);
-    feat.querySelector('.feat__bg').innerHTML='<div class="feat__deco"></div>';
-    feat.querySelector('.feat__body').innerHTML='<span class="chip k-'+esc(p.kategori)+'">'+esc(p.kategori)+'</span>'+
-      '<h3>'+esc(p.judul)+'</h3><p>'+esc(p.ringkasan)+'</p>'+
-      '<div class="feat__meta">'+fmt(p.tanggal)+' • '+esc(p.baca)+' menit baca</div>';
-  }
-  function card(p){
-    const el=document.createElement('article'); el.className='post reveal';
-    el.innerHTML='<div class="post__cov" style="background:'+bg(p)+'"><span class="post__chip chip k-'+esc(p.kategori)+'">'+esc(p.kategori)+'</span><div class="post__deco"></div>'+cover(p)+'</div>'+
-      '<div class="post__body"><h3>'+esc(p.judul)+'</h3><p>'+esc(p.ringkasan)+'</p>'+
-      '<div class="post__meta"><span>'+fmt(p.tanggal)+'</span><span class="rd">'+esc(p.baca)+' mnt</span></div></div>';
-    return el;
-  }
-  function render(list){
-    if(!list||!list.length){ status.style.display='block'; return; }
-    status.style.display='none';
-    renderFeat(list[0]);
-    grid.innerHTML='';
-    list.forEach(p=>{ const c=card(p); grid.appendChild(c); requestAnimationFrame(()=>c.classList.add('in')); });
-    // ticker
-    const items=list.map(p=>'<a href="'+(p.link||'#')+'"><b>'+esc(p.kategori)+'</b>'+esc(p.judul)+'</a>').join('');
-    ticker.innerHTML=items+items;
-  }
-  fetch('news.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json();})
-    .then(d=>render(Array.isArray(d)?d:DEFAULT_NEWS)).catch(()=>render(DEFAULT_NEWS));
-})();
+/* ---- Order modal ---- */
+const modal = document.getElementById('orderModal');
+let currentProduct = "", currentPrice = "";
 
-/* ---------- PRODUK (products.json) ---------- */
-(function(){
-  const grid=document.getElementById('katalogGrid'), status=document.getElementById('katalogStatus');
-  const WA='https://wa.me/6285600000279?text=';
-  const covers={Ebook:'linear-gradient(135deg,#243a7a,#16265C)',Digital:'linear-gradient(135deg,#E09A1F,#F97316)',Jasa:'linear-gradient(135deg,#F97316,#c0392b)',AI:'linear-gradient(135deg,#16265C,#21B8D6)'};
-  const ICON='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m3 16 5-5 4 4 3-3 6 6"/><circle cx="9" cy="9" r="1.6"/></svg>';
-  const DEFAULT_PRODUCTS=[
-    {nama:"Mahir Prompt AI untuk Pemula",kat:"Ebook",harga:"Rp 49rb",coret:"Rp 99rb",desk:"Panduan menyusun prompt efektif untuk ChatGPT & AI lain, dari nol.",img:""},
-    {nama:"Paket Konten Medsos 30 Hari",kat:"Jasa",harga:"Rp 1,5jt",coret:"",desk:"Konten sebulan penuh: desain, reels, caption, dan jadwal posting.",img:""},
-    {nama:"AI Agent Auto-Reply WhatsApp",kat:"AI",harga:"Rp 750rb",coret:"",desk:"Chatbot AI yang membalas pesan pelanggan otomatis 24/7 + setup.",img:""},
-    {nama:"Bundle Template & Preset Konten",kat:"Digital",harga:"Rp 79rb",coret:"Rp 149rb",desk:"Template dan preset siap pakai untuk konten lebih cepat & rapi.",img:""}
-  ];
-  function card(p){
-    const el=document.createElement('article'); el.className='prod reveal';
-    const cov=p.img?'<img src="'+p.img+'" alt="'+esc(p.nama)+'">':ICON;
-    const coret=p.coret?'<s>'+esc(p.coret)+'</s>':'';
-    const wa=WA+encodeURIComponent('Halo Gozali, saya mau pesan: '+p.nama);
-    el.innerHTML='<div class="prod__cover" style="background:'+(covers[p.kat]||covers.Ebook)+'"><span class="prod__tag">'+esc(p.kat)+'</span><div class="prod__deco"></div>'+cov+'</div>'+
-      '<div class="prod__body"><h3>'+esc(p.nama)+'</h3><p>'+esc(p.desk||'')+'</p>'+
-      '<div class="prod__foot"><div class="prod__price"><b>'+esc(p.harga)+'</b>'+coret+'</div>'+
-      '<a href="'+wa+'" target="_blank" rel="noopener" class="prod__buy">Pesan <span class="arr">&rarr;</span></a></div></div>';
-    return el;
-  }
-  function render(list){
-    grid.innerHTML='';
-    (list||[]).forEach(p=>{const c=card(p);grid.appendChild(c);requestAnimationFrame(()=>c.classList.add('in'));});
-    status.style.display=(list&&list.length)?'none':'block';
-  }
-  fetch('products.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json();})
-    .then(d=>render(Array.isArray(d)?d:DEFAULT_PRODUCTS)).catch(()=>render(DEFAULT_PRODUCTS));
-})();
+function openModal(name, price){
+  currentProduct = name; currentPrice = price;
+  document.getElementById('sumName').innerText = name;
+  document.getElementById('sumPrice').innerText = price;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.style.overflow = 'auto';
+  document.getElementById('clientName').value = '';
+  document.getElementById('clientEmail').value = '';
+}
+modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
-/* ---------- EDUKASI (edukasi.json) ---------- */
-(function(){
-  const grid=document.getElementById('eduGrid'), status=document.getElementById('eduStatus');
-  const lvlColors={Pemula:'#1FA971',Menengah:'#E09A1F',Lanjut:'#F97316'};
-  const EDU_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>';
-  const DEFAULT_EDU=[
-    {judul:"Dasar-dasar AI untuk Pemula",level:"Pemula",ringkasan:"Kenalan dengan konsep AI, machine learning, dan cara memakainya sehari-hari.",durasi:"45 mnt",img:"",link:"#"},
-    {judul:"Bikin AI Agent Pertamamu",level:"Menengah",ringkasan:"Langkah praktis merancang chatbot & AI agent tanpa harus jago coding.",durasi:"1,5 jam",img:"",link:"#"},
-    {judul:"AI Automation untuk Bisnis",level:"Lanjut",ringkasan:"Rancang alur otomasi yang menghemat waktu dari lead sampai laporan.",durasi:"2 jam",img:"",link:"#"}
-  ];
-  function bg(p){ const c=lvlColors[p.level]||'#1FA971'; return 'linear-gradient(135deg,'+c+',#16265C)'; }
-  function card(p){
-    const el=document.createElement('article'); el.className='post reveal';
-    const cov=p.img?'<img src="'+p.img+'" alt="'+esc(p.judul)+'">':EDU_ICON;
-    el.innerHTML='<div class="post__cov" style="background:'+bg(p)+'"><span class="post__chip edu-lvl lvl-'+esc(p.level)+'">'+esc(p.level)+'</span><div class="post__deco"></div>'+cov+'</div>'+
-      '<div class="post__body"><h3>'+esc(p.judul)+'</h3><p>'+esc(p.ringkasan)+'</p>'+
-      '<div class="post__meta"><span>⏱ '+esc(p.durasi)+'</span></div>'+
-      '<a href="'+(p.link||'#')+'" class="edu-link">Mulai belajar <span class="arr">→</span></a></div>';
-    return el;
-  }
-  function render(list){
-    grid.innerHTML='';
-    (list||[]).forEach(p=>{const c=card(p);grid.appendChild(c);requestAnimationFrame(()=>c.classList.add('in'));});
-    status.style.display=(list&&list.length)?'none':'block';
-  }
-  fetch('edukasi.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json();})
-    .then(d=>render(Array.isArray(d)?d:DEFAULT_EDU)).catch(()=>render(DEFAULT_EDU));
-})();
+function sendToWhatsApp(){
+  const name = document.getElementById('clientName').value.trim();
+  const email = document.getElementById('clientEmail').value.trim();
+  if(!name){ alert('Mohon isi nama Anda terlebih dahulu.'); return; }
 
-/* ---------- PEMBAYARAN (pembayaran.json) ---------- */
-(function(){
-  const $=id=>document.getElementById(id);
-  const DEFAULT_PAY={
-    qris: ($('qrisImg')?$('qrisImg').src:''),
-    merchant:'M GOZALI SALIM, DIGITAL & KREATIF',
-    nmid:'ID1026545885604',
-    ewallet_no:'085600000279',
-    bank_name:'Bank Mandiri',
-    bank_no:'1020004981236',
-    holder:'M Gozali Salim',
-    wa:'6285600000279'
-  };
-  const digits=s=>String(s||'').replace(/\D/g,'');
-  const group4=s=>digits(s).replace(/(.{4})/g,'$1 ').trim();
-  function apply(p){
-    if(p.qris && $('qrisImg')){ $('qrisImg').src=p.qris; }
-    if(p.qris && $('qrisDownload')){ $('qrisDownload').href=p.qris; }
-    if($('qrisMerchant')) $('qrisMerchant').textContent=p.merchant||'';
-    if($('qrisNmid')) $('qrisNmid').textContent='NMID: '+(p.nmid||'')+' · GPN';
-    if($('ewVal')) $('ewVal').textContent=group4(p.ewallet_no);
-    if($('ewCopy')) $('ewCopy').setAttribute('data-copy',digits(p.ewallet_no));
-    if($('ewName')) $('ewName').textContent=p.holder||'';
-    if($('bankLbl')) $('bankLbl').textContent=(p.bank_name||'Bank')+' — No. Rekening';
-    if($('bankVal')) $('bankVal').textContent=digits(p.bank_no);
-    if($('bankCopy')) $('bankCopy').setAttribute('data-copy',digits(p.bank_no));
-    if($('bankName')) $('bankName').textContent=p.holder||'';
-    if($('waLink')) $('waLink').href='https://wa.me/'+digits(p.wa)+'?text=Halo%20Gozali%2C%20saya%20sudah%20transfer%20pembayaran';
-  }
-  fetch('pembayaran.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json();})
-    .then(d=>apply(Object.assign({},DEFAULT_PAY,d||{}))).catch(()=>apply(DEFAULT_PAY));
-})();
+  const msg =
+`Halo Gozali Corp Technology,
 
-/* ---------- tombol salin nomor ---------- */
-document.querySelectorAll('.copy-btn').forEach(btn=>{
-  btn.addEventListener('click',async()=>{
-    const v=btn.getAttribute('data-copy');
-    try{await navigator.clipboard.writeText(v);}catch(e){const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-    const o=btn.innerHTML; btn.innerHTML='✓ Tersalin'; btn.classList.add('done');
-    setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('done');},1800);
-  });
-});
+Saya ingin memesan produk digital berikut:
+
+*Detail Pesanan*
+• Produk: ${currentProduct}
+• Harga: ${currentPrice}
+
+*Data Pembeli*
+• Nama: ${name}
+• Email: ${email || '-'}
+
+Mohon informasi metode pembayaran dan tautan unduhannya. Terima kasih!`;
+
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+  closeModal();
+}
+
+/* ---- Scroll reveal ---- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
