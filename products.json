@@ -2,33 +2,45 @@
   {
     "nama": "Mahir Prompt AI untuk Pemula",
     "kat": "Ebook",
-    "harga": "Rp 49rb",
-    "coret": "Rp 99rb",
-    "desk": "Panduan menyusun prompt efektif untuk ChatGPT & AI lain, dari nol.",
-    "img": ""
+    "harga": "Rp 49.000",
+    "coret": "Rp 99.000",
+    "desk": "Panduan menyusun prompt efektif untuk ChatGPT & AI lain, dari nol hingga mahir.",
+    "img": "",
+    "emoji": "🧠",
+    "note": "Sekali bayar",
+    "aksi": "Beli"
   },
   {
     "nama": "Paket Konten Medsos 30 Hari",
     "kat": "Jasa",
-    "harga": "Rp 1,5jt",
+    "harga": "Rp 1.500.000",
     "coret": "",
-    "desk": "Konten sebulan penuh: desain, reels, caption, dan jadwal posting.",
-    "img": ""
+    "desk": "Konten sebulan penuh: desain, reels, caption, dan jadwal posting siap tayang.",
+    "img": "",
+    "emoji": "🎬",
+    "note": "Per proyek",
+    "aksi": "Pesan"
   },
   {
     "nama": "AI Agent Auto-Reply WhatsApp",
     "kat": "AI",
-    "harga": "Rp 750rb",
+    "harga": "Rp 750.000",
     "coret": "",
-    "desk": "Chatbot AI yang membalas pesan pelanggan otomatis 24/7 + setup.",
-    "img": ""
+    "desk": "Chatbot AI yang membalas pesan pelanggan otomatis 24/7, lengkap dengan setup.",
+    "img": "",
+    "emoji": "🤖",
+    "note": "Setup + support",
+    "aksi": "Konsultasi"
   },
   {
     "nama": "Bundle Template & Preset Konten",
     "kat": "Digital",
-    "harga": "Rp 79rb",
-    "coret": "Rp 149rb",
-    "desk": "Template dan preset siap pakai untuk konten lebih cepat & rapi.",
-    "img": ""
+    "harga": "Rp 79.000",
+    "coret": "Rp 149.000",
+    "desk": "Template dan preset siap pakai untuk membuat konten lebih cepat, rapi, dan konsisten.",
+    "img": "",
+    "emoji": "🎨",
+    "note": "Sekali bayar",
+    "aksi": "Beli"
   }
 ]
