@@ -422,6 +422,14 @@ label.fld .t{font-size:12.5px;color:var(--ink-200);margin-bottom:7px;display:blo
 .marquee-item::before{content:"◆";color:var(--cyan);font-size:8px}
 @keyframes scrollX{to{transform:translateX(-50%)}}
 
+/* top marquee variant */
+.marquee-top{background:rgba(0,82,255,.06);border-top:none;border-bottom:1px solid var(--line-soft);padding:11px 0}
+.marquee-top .marquee-item{color:var(--ink-200);font-size:12px}
+.marquee-top .marquee-item::before{color:var(--blue-bright)}
+.marquee-top .marquee-track{animation-duration:38s;animation-direction:reverse}
+.marquee-top::before{background:linear-gradient(90deg,#0b1d3a,transparent)}
+.marquee-top::after{background:linear-gradient(270deg,#0b1d3a,transparent)}
+
 /* ============ RESPONSIVE ============ */
 @media(max-width:980px){
   .cards-3,.cards-4,.shop-grid{grid-template-columns:1fr 1fr}
@@ -527,6 +535,13 @@ label.fld .t{font-size:12.5px;color:var(--ink-200);margin-bottom:7px;display:blo
     </div>
   </div>
 </header>
+
+<!-- ================= TOP MARQUEE (below navbar) ================= -->
+<div class="marquee marquee-top" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">AI &amp; Automation</span><span class="marquee-item">Cloud Infrastructure</span><span class="marquee-item">Web &amp; Mobile Apps</span><span class="marquee-item">Video Production</span><span class="marquee-item">Chatbot &amp; API</span><span class="marquee-item">UI / UX Design</span><span class="marquee-item">Smart Tools</span><span class="marquee-item">E-Book Premium</span><span class="marquee-item">Digital Marketing</span><span class="marquee-item">Cyber Security</span>
+  </div>
+</div>
 
 <!-- ================= HERO ================= -->
 <section id="home" class="hero">
@@ -1143,8 +1158,7 @@ const countIO = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat .n[data-to]').forEach(el => countIO.observe(el));
 
 /* ---- Seamless marquee (duplicate content) ---- */
-const mt = document.getElementById('mtrack');
-if(mt){ mt.innerHTML += mt.innerHTML; }
+document.querySelectorAll('.marquee-track').forEach(t => { t.innerHTML += t.innerHTML; });
 
 </script>
 </body>
