@@ -35,6 +35,7 @@
   --orange:#FF6B00;
   --orange-deep:#E56000;
   --cyan:#22D3EE;
+  --gold-ac:#F4B63E;
 
   --ink-100:#EAF1FB;
   --ink-200:#C6D3E8;
@@ -297,6 +298,32 @@ section.block{padding:96px 0;position:relative}
 }
 .buy:hover{background:#0046dd;transform:translateY(-2px)}
 
+/* ============ EDUKASI ============ */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.edu{
+  display:flex;flex-direction:column;
+  background:linear-gradient(180deg,var(--navy-850),var(--navy-900));
+  border:1px solid var(--line-soft);border-radius:var(--radius);
+  overflow:hidden;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+}
+.edu:hover{transform:translateY(-5px);border-color:#2b4a7d;box-shadow:0 26px 50px -28px rgba(0,0,0,.75)}
+.edu-cover{height:120px;position:relative;display:grid;place-items:center;
+  background:radial-gradient(120% 120% at 30% 0%,rgba(34,211,238,.28),transparent 60%),linear-gradient(135deg,#10254a,#0c1c38);
+  border-bottom:1px solid var(--line-soft);font-size:40px}
+.edu-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.edu-body{padding:20px;display:flex;flex-direction:column;flex-grow:1}
+.edu .lvl{align-self:flex-start;font-family:var(--font-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  padding:4px 9px;border-radius:6px;margin-bottom:12px}
+.lvl-pemula{background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);color:var(--cyan)}
+.lvl-menengah{background:rgba(244,182,62,.1);border:1px solid rgba(244,182,62,.3);color:var(--gold-ac)}
+.lvl-lanjut{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);color:var(--orange)}
+.edu h3{font-size:16px;margin-bottom:8px}
+.edu p{font-size:13px;color:var(--ink-300);margin-bottom:16px;flex-grow:1}
+.edu .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border-top:1px solid var(--line-soft);padding-top:13px;font-family:var(--font-mono);font-size:11px;color:#6d80a0}
+.edu .go{color:var(--blue-bright);font-weight:600;font-family:var(--font-sans);font-size:12.5px}
+.edu-empty{grid-column:1/-1;text-align:center;color:var(--ink-300);font-size:14px;padding:34px}
+
 /* ============ BERITA ============ */
 #berita{background:linear-gradient(180deg,var(--navy-950),#0a1c38)}
 .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -469,7 +496,7 @@ label.fld .t{font-size:12.5px;color:var(--ink-200);margin-bottom:7px;display:blo
 
 /* ============ RESPONSIVE ============ */
 @media(max-width:980px){
-  .cards-3,.cards-4,.shop-grid,.news-grid{grid-template-columns:1fr 1fr}
+  .cards-3,.cards-4,.shop-grid,.news-grid,.edu-grid{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:1fr 1fr}
   .step:nth-child(2)::after{display:none}
   .why-grid{grid-template-columns:1fr;gap:36px}
@@ -488,7 +515,7 @@ label.fld .t{font-size:12.5px;color:var(--ink-200);margin-bottom:7px;display:blo
   .nav-links.show a::after{display:none}
   .menu-btn{display:grid;place-items:center}
   .nav-cta .btn.desktop-only{display:none}
-  .cards-3,.cards-4,.shop-grid,.steps,.news-grid{grid-template-columns:1fr}
+  .cards-3,.cards-4,.shop-grid,.steps,.news-grid,.edu-grid{grid-template-columns:1fr}
   .step::after{display:none}
   .stat-grid{grid-template-columns:1fr 1fr}
   .foot-grid{grid-template-columns:1fr}
@@ -515,6 +542,7 @@ label.fld .t{font-size:12.5px;color:var(--ink-200);margin-bottom:7px;display:blo
       <a href="#services">4 Pilar Layanan</a>
       <a href="#trust">Mengapa Kami</a>
       <a href="#shop">Produk Digital</a>
+      <a href="#edukasi">Edukasi</a>
       <a href="#berita">Berita</a>
     </nav>
     <div class="nav-cta">
@@ -754,6 +782,18 @@ label.fld .t{font-size:12.5px;color:var(--ink-200);margin-bottom:7px;display:blo
   </div>
 </section>
 
+<!-- ================= EDUKASI ================= -->
+<section id="edukasi" class="block">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Belajar Bersama Kami</span>
+      <h2>Materi Edukasi</h2>
+      <p>Panduan terapan untuk memahami teknologi dan AI, dari level pemula hingga lanjut.</p>
+    </div>
+    <div class="edu-grid" id="eduGrid"><!-- dimuat dinamis dari edukasi.json --></div>
+  </div>
+</section>
+
 <!-- ================= BERITA TEKNOLOGI ================= -->
 <section id="berita" class="block">
   <div class="wrap">
@@ -823,9 +863,9 @@ label.fld .t{font-size:12.5px;color:var(--ink-200);margin-bottom:7px;display:blo
         <h5>Metode Pembayaran</h5>
         <p class="pay">
           <b>E-Wallet</b> (DANA/OVO/GoPay/LinkAja)<br>
-          <b>085600000279</b><br>
-          <b>Bank Mandiri:</b> 1020004981236<br>
-          a.n. M Gozali Salim
+          <b data-ewallet-no>085600000279</b><br>
+          <b data-bank-name>Bank Mandiri</b>: <span data-bank-no>1020004981236</span><br>
+          <span data-holder>a.n. M Gozali Salim</span>
         </p>
       </div>
     </div>
@@ -895,7 +935,7 @@ label.fld .t{font-size:12.5px;color:var(--ink-200);margin-bottom:7px;display:blo
 
 <script>
 /* ---- Config ---- */
-const WA_NUMBER = "6285600000279";
+let WA_NUMBER = "6285600000279";
 
 /* ---- Mobile menu ---- */
 const menuBtn = document.getElementById('menuBtn');
@@ -908,8 +948,8 @@ const modal = document.getElementById('orderModal');
 let currentProduct = "", currentPrice = "";
 let payMethod = "", payNumber = "";
 
-const EWALLET_NUMBER = "085600000279";
-const MANDIRI_NUMBER = "1020004981236";
+let EWALLET_NUMBER = "085600000279";
+let MANDIRI_NUMBER = "1020004981236";
 
 function pickPay(el, method){
   document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('sel'));
@@ -1088,6 +1128,57 @@ function renderProducts(list){
 }
 loadProducts().then(renderProducts);
 
+/* ---- Dynamic payment info (dikelola lewat admin.html) ---- */
+async function loadPembayaran(){
+  try{
+    const r = await fetch('pembayaran.json',{cache:'no-store'});
+    if(!r.ok) return;
+    const d = await r.json();
+    if(!d || typeof d !== 'object') return;
+
+    if(d.ewallet_no) EWALLET_NUMBER = d.ewallet_no;
+    if(d.bank_no)    MANDIRI_NUMBER = d.bank_no;
+    if(d.wa)         WA_NUMBER      = d.wa;
+
+    if(d.holder){
+      const h = document.getElementById('payHolder');
+      if(h) h.textContent = 'a.n. ' + d.holder;
+      document.querySelectorAll('.qris-info .an').forEach(e => e.textContent = 'a.n. ' + d.holder);
+    }
+    if(d.merchant){
+      const m = document.getElementById('qrisMerchant');
+      if(m) m.textContent = d.merchant;
+    }
+    if(d.nmid){
+      const n = document.getElementById('qrisNmid');
+      if(n) n.textContent = 'NMID: ' + d.nmid;
+    }
+    if(d.qris){
+      const q = document.getElementById('qrisImg');
+      if(q) q.src = d.qris;
+    }
+    if(d.bank_name){
+      document.querySelectorAll('[data-bank-name]').forEach(e => e.textContent = d.bank_name);
+    }
+    if(d.ewallet_no){
+      document.querySelectorAll('[data-ewallet-no]').forEach(e => e.textContent = d.ewallet_no);
+    }
+    if(d.bank_no){
+      document.querySelectorAll('[data-bank-no]').forEach(e => e.textContent = d.bank_no);
+    }
+    if(d.holder){
+      document.querySelectorAll('[data-holder]').forEach(e => e.textContent = 'a.n. ' + d.holder);
+    }
+    // perbarui tautan WhatsApp di seluruh halaman
+    if(d.wa){
+      document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+        a.href = a.href.replace(/wa\.me\/\d+/, 'wa.me/' + d.wa);
+      });
+    }
+  }catch(e){ /* pakai nilai bawaan yang sudah tertanam */ }
+}
+loadPembayaran();
+
 /* ---- Dynamic news (auto-posted via GitHub Actions) ---- */
 const KAT_WARNA = {
   AI:'#22D3EE', Gadget:'#F4B63E', Startup:'#FF6B00',
@@ -1134,6 +1225,52 @@ function renderNews(list){
   });
 }
 loadNews().then(renderNews);
+
+/* ---- Dynamic edukasi (dikelola lewat admin.html) ---- */
+const EDU_DEFAULT_WEB = [
+  {judul:"Dasar-dasar AI untuk Pemula",level:"Pemula",ringkasan:"Kenalan dengan konsep AI, machine learning, dan cara memakainya sehari-hari.",durasi:"45 mnt",img:"",link:"#"},
+  {judul:"Bikin AI Agent Pertamamu",level:"Menengah",ringkasan:"Langkah praktis merancang chatbot & AI agent tanpa harus jago coding.",durasi:"1,5 jam",img:"",link:"#"},
+  {judul:"AI Automation untuk Bisnis",level:"Lanjut",ringkasan:"Rancang alur otomasi yang menghemat waktu dari lead sampai laporan.",durasi:"2 jam",img:"",link:"#"}
+];
+async function loadEdukasi(){
+  try{
+    const ls = localStorage.getItem('gct_edukasi');
+    if(ls){ const a = JSON.parse(ls); if(Array.isArray(a) && a.length) return a; }
+  }catch(e){}
+  try{
+    const r = await fetch('edukasi.json',{cache:'no-store'});
+    if(r.ok){ const d = await r.json(); const a = Array.isArray(d) ? d : (d.edukasi||[]); if(a.length) return a; }
+  }catch(e){}
+  return EDU_DEFAULT_WEB;
+}
+function renderEdukasi(list){
+  const grid = document.getElementById('eduGrid');
+  if(!grid) return;
+  if(!list.length){ grid.innerHTML = '<div class="edu-empty">Belum ada materi edukasi.</div>'; return; }
+  grid.innerHTML = '';
+  list.forEach(m => {
+    const lvl = m.level || 'Pemula';
+    const cls = 'lvl-' + lvl.toLowerCase();
+    const punyaLink = m.link && m.link !== '#';
+    const el = document.createElement(punyaLink ? 'a' : 'div');
+    el.className = 'edu reveal in';
+    if(punyaLink){ el.href = m.link; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
+    const cover = m.img ? `<img src="${esc(m.img)}" alt="${esc(m.judul||'')}" loading="lazy">` : '🎓';
+    el.innerHTML = `
+      <div class="edu-cover">${cover}</div>
+      <div class="edu-body">
+        <span class="lvl ${cls}">${esc(lvl)}</span>
+        <h3>${esc(m.judul || '')}</h3>
+        <p>${esc(m.ringkasan || '')}</p>
+        <div class="foot">
+          <span>⏱ ${esc(m.durasi || '-')}</span>
+          ${punyaLink ? '<span class="go">Pelajari →</span>' : ''}
+        </div>
+      </div>`;
+    grid.appendChild(el);
+  });
+}
+loadEdukasi().then(renderEdukasi);
 
 </script>
 </body>
