@@ -135,6 +135,40 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 #toast.ok{border-color:rgba(22,163,74,.5)} #toast.ok::before{content:"✓ ";color:#4ade80}
 
+/* ===== TABS ===== */
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line-soft);margin-bottom:22px;flex-wrap:wrap}
+.tab{
+  background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;
+  font-family:var(--font);font-size:14px;font-weight:600;color:var(--ink-300);
+  padding:12px 18px;transition:.2s;display:flex;align-items:center;gap:8px;margin-bottom:-1px;
+}
+.tab:hover{color:var(--ink-100)}
+.tab.on{color:#fff;border-bottom-color:var(--gold)}
+.tab .n{font-family:var(--mono);font-size:10px;background:rgba(255,255,255,.08);padding:2px 6px;border-radius:5px}
+.tab.on .n{background:rgba(244,182,62,.2);color:var(--gold)}
+.panelpage{display:none}
+.panelpage.on{display:block}
+
+/* ===== QRIS ===== */
+.qris-box{background:#fff;border-radius:14px;padding:16px;text-align:center;max-width:230px}
+.qris-box img{width:100%;display:block;image-rendering:pixelated;border-radius:8px}
+.qris-box .none{color:#64748B;font-size:12px;padding:50px 10px}
+.qris-meta{margin-top:10px;color:#0A192F;font-size:11px;line-height:1.5}
+.qris-meta b{font-size:11.5px}
+.qris-actions{display:flex;flex-direction:column;gap:8px}
+
+/* ===== EDUKASI preview ===== */
+.ecard{background:linear-gradient(180deg,var(--navy-850),var(--navy-900));border:1px solid var(--line-soft);border-radius:14px;padding:18px;max-width:260px}
+.ecard .lvl{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+  background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.3);color:var(--cyan);padding:4px 8px;border-radius:6px;margin-bottom:10px}
+.ecard h4{color:#fff;font-size:14px;margin-bottom:6px}
+.ecard p{color:var(--ink-300);font-size:12px;margin-bottom:12px}
+.ecard .dur{font-family:var(--mono);font-size:10.5px;color:#6d80a0}
+
+/* ===== FORM PANEL LEBAR ===== */
+.wide{max-width:760px}
+.hint{font-size:11.5px;color:var(--ink-300);margin-top:-8px;margin-bottom:14px;line-height:1.5}
+
 /* modal (password change) */
 .modal{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(4,10,22,.8);backdrop-filter:blur(6px)}
 .modal.on{display:flex}
@@ -189,6 +223,14 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
   </div>
 
   <div class="container">
+    <div class="tabs">
+      <button class="tab on" data-tab="produk" onclick="pilihTab('produk')">🛍️ Produk <span class="n" id="nProduk">0</span></button>
+      <button class="tab" data-tab="bayar" onclick="pilihTab('bayar')">💳 Pembayaran</button>
+      <button class="tab" data-tab="edukasi" onclick="pilihTab('edukasi')">🎓 Edukasi <span class="n" id="nEdukasi">0</span></button>
+    </div>
+
+    <!-- ============================ TAB PRODUK ============================ -->
+    <div class="panelpage on" id="page-produk">
     <div class="pagehead">
       <h2>Produk Digital — E-Book & Store</h2>
       <p>Tambah, edit, hapus, dan urutkan produk yang tampil di etalase website.</p>
@@ -290,6 +332,168 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="plist" id="plist"></div>
       </div>
     </div>
+    </div><!-- /page-produk -->
+
+    <!-- ============================ TAB PEMBAYARAN ============================ -->
+    <div class="panelpage" id="page-bayar">
+      <div class="pagehead">
+        <h2>Metode Pembayaran</h2>
+        <p>Atur QRIS, nomor e-wallet, dan rekening bank yang tampil di formulir pembelian.</p>
+      </div>
+
+      <div class="banner">
+        <span class="i">ⓘ</span>
+        <div>Setelah menyimpan, klik <b>Unduh pembayaran.json</b> lalu commit file itu ke GitHub. Website membaca file ini otomatis — <b>tanpa perlu mengedit index.html</b>.</div>
+      </div>
+
+      <div class="toolbar">
+        <button class="btn btn-gold" onclick="unduhBayar()">⬇ Unduh pembayaran.json</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('bayarFile').click()">⬆ Impor pembayaran.json</button>
+        <button class="btn btn-ghost" onclick="muatBayarServer()">⟳ Muat dari Server</button>
+        <input type="file" id="bayarFile" accept="application/json,.json" hidden onchange="imporBayar(event)">
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h3><span class="tag">DATA</span> Rekening &amp; Kontak</h3>
+
+          <label class="fld"><span class="t">Nomor E-Wallet <small>(DANA / OVO / GoPay / LinkAja)</small></span>
+            <input class="inp" id="b_ewallet" placeholder="085600000279" oninput="syncBayar()">
+          </label>
+
+          <div class="row2">
+            <label class="fld"><span class="t">Nama Bank</span>
+              <input class="inp" id="b_bank_name" placeholder="Bank Mandiri" oninput="syncBayar()">
+            </label>
+            <label class="fld"><span class="t">No. Rekening</span>
+              <input class="inp" id="b_bank_no" placeholder="1020004981236" oninput="syncBayar()">
+            </label>
+          </div>
+
+          <label class="fld"><span class="t">Atas Nama</span>
+            <input class="inp" id="b_holder" placeholder="M Gozali Salim" oninput="syncBayar()">
+          </label>
+
+          <label class="fld"><span class="t">Nama Merchant QRIS</span>
+            <input class="inp" id="b_merchant" placeholder="M GOZALI SALIM, DIGITAL & KREATIF" oninput="syncBayar()">
+          </label>
+
+          <label class="fld"><span class="t">NMID QRIS</span>
+            <input class="inp" id="b_nmid" placeholder="ID1026545885604" oninput="syncBayar()">
+          </label>
+
+          <label class="fld"><span class="t">Nomor WhatsApp <small>(format 62…)</small></span>
+            <input class="inp" id="b_wa" placeholder="6285600000279" oninput="syncBayar()">
+          </label>
+          <p class="hint">Dipakai untuk tombol "Konsultasi" dan pengiriman detail pesanan.</p>
+
+          <div class="form-actions">
+            <button class="btn btn-blue" style="flex:1;justify-content:center" onclick="simpanBayar()">Simpan Perubahan</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3><span class="tag">QRIS</span> Kode Pembayaran</h3>
+          <div class="imgbox" style="align-items:flex-start;gap:18px">
+            <div class="qris-box" id="qrisBox">
+              <div class="none" id="qrisNone">Belum ada QRIS</div>
+              <img id="qrisImg" style="display:none" alt="QRIS">
+              <div class="qris-meta">
+                <b id="qrisMerchantPv">—</b><br>
+                <span id="qrisNmidPv">—</span>
+              </div>
+            </div>
+            <div class="qris-actions">
+              <button class="btn btn-ghost btn-sm" onclick="document.getElementById('qrisFile').click()">Ganti Gambar QRIS</button>
+              <button class="btn btn-red btn-sm" onclick="hapusQris()">Hapus QRIS</button>
+              <input type="file" id="qrisFile" accept="image/*" hidden onchange="onQris(event)">
+              <p class="hint" style="margin:6px 0 0">Unggah foto/tangkapan layar QRIS Anda. Gambar otomatis dipotong jadi kotak, dikecilkan, dan diubah ke hitam-putih agar file ringan namun tetap bisa di-scan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /page-bayar -->
+
+    <!-- ============================ TAB EDUKASI ============================ -->
+    <div class="panelpage" id="page-edukasi">
+      <div class="pagehead">
+        <h2>Materi Edukasi</h2>
+        <p>Kelola daftar materi belajar yang tampil di section Edukasi pada website.</p>
+      </div>
+
+      <div class="banner">
+        <span class="i">ⓘ</span>
+        <div>Setelah selesai, klik <b>Unduh edukasi.json</b> lalu commit file itu ke GitHub agar tampil untuk semua pengunjung.</div>
+      </div>
+
+      <div class="toolbar">
+        <button class="btn btn-gold" onclick="unduhEdu()">⬇ Unduh edukasi.json</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('eduFile').click()">⬆ Impor edukasi.json</button>
+        <button class="btn btn-ghost" onclick="muatEduServer()">⟳ Muat dari Server</button>
+        <input type="file" id="eduFile" accept="application/json,.json" hidden onchange="imporEdu(event)">
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h3 id="eduFormTitle"><span class="tag">BARU</span> Tambah Materi</h3>
+
+          <label class="fld"><span class="t">Judul Materi</span>
+            <input class="inp" id="e_judul" placeholder="mis. Dasar-dasar AI untuk Pemula" oninput="syncEdu()">
+          </label>
+
+          <div class="row2">
+            <label class="fld"><span class="t">Level</span>
+              <select id="e_level" onchange="syncEdu()">
+                <option>Pemula</option><option>Menengah</option><option>Lanjut</option>
+              </select>
+            </label>
+            <label class="fld"><span class="t">Durasi</span>
+              <input class="inp" id="e_durasi" placeholder="45 mnt" oninput="syncEdu()">
+            </label>
+          </div>
+
+          <label class="fld"><span class="t">Ringkasan</span>
+            <textarea id="e_ringkasan" placeholder="Jelaskan isi materi dalam 1-2 kalimat." oninput="syncEdu()"></textarea>
+          </label>
+
+          <label class="fld"><span class="t">Tautan <small>(opsional — ke e-book / artikel)</small></span>
+            <input class="inp" id="e_link" placeholder="#" oninput="syncEdu()">
+          </label>
+
+          <label class="fld"><span class="t">Gambar <small>(opsional)</small></span>
+            <div class="imgbox">
+              <div class="imgprev" id="eduImgPrev">🎓</div>
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <button class="btn btn-ghost btn-sm" type="button" onclick="document.getElementById('eduImgFile').click()">Pilih Gambar</button>
+                <button class="btn btn-red btn-sm" type="button" onclick="hapusEduImg()">Hapus Gambar</button>
+              </div>
+              <input type="file" id="eduImgFile" accept="image/*" hidden onchange="onEduImg(event)">
+            </div>
+          </label>
+
+          <div class="form-actions">
+            <button class="btn btn-blue" id="eduSaveBtn" style="flex:1;justify-content:center" onclick="simpanEdu()">Tambah Materi</button>
+            <button class="btn btn-ghost" id="eduCancelBtn" onclick="resetEduForm()" style="display:none">Batal</button>
+          </div>
+
+          <div class="previewwrap">
+            <div class="lbl">Pratinjau Kartu</div>
+            <div class="ecard">
+              <span class="lvl" id="ev_lvl">Pemula</span>
+              <h4 id="ev_judul">Judul Materi</h4>
+              <p id="ev_ring">Ringkasan materi akan tampil di sini.</p>
+              <span class="dur" id="ev_dur">45 mnt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Daftar Materi <span class="count" id="eduCount">0 materi</span></h3>
+          <div class="plist" id="elist"></div>
+        </div>
+      </div>
+    </div><!-- /page-edukasi -->
+
   </div>
 </div>
 
@@ -370,18 +574,37 @@ function load(){
 }
 function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 
-function init(){
+async function init(){
   products=load();
   renderList();
   resetForm();
   onKatChange();
   syncPreview();
+
+  // tab Pembayaran — kalau belum ada data lokal, ambil yang live dari server
+  bayar = muatBayar();
+  isiFormBayar();
+  if(!adaLS(KEY_BAYAR)) await muatBayarServer(true);
+
+  // tab Edukasi — sama
+  edukasi = muatEdu();
+  renderEdu();
+  resetEduForm();
+  if(!adaLS(KEY_EDU)) await muatEduServer(true);
+
+  // buka kembali tab terakhir
+  try{
+    const t = localStorage.getItem('gct_admin_tab');
+    if(t && document.getElementById('page-' + t)) pilihTab(t);
+  }catch(e){}
 }
+function adaLS(k){ try{ return !!localStorage.getItem(k); }catch(e){ return false; } }
 
 /* ================= LIST ================= */
 function renderList(){
   const box=document.getElementById('plist');
   document.getElementById('count').textContent=products.length+' produk';
+  document.getElementById('nProduk').textContent=products.length;
   if(!products.length){ box.innerHTML='<div class="empty">Belum ada produk. Tambahkan lewat formulir di kiri.</div>'; return; }
   box.innerHTML='';
   products.forEach((p,i)=>{
@@ -561,6 +784,285 @@ async function loadFromServer(){
 function resetDefault(){
   if(!confirm('Kembalikan ke daftar produk contoh? Perubahan lokal akan hilang.')) return;
   products=JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)); save(); renderList(); resetForm(); toast('Direset ke contoh');
+}
+
+/* ================= TABS ================= */
+function pilihTab(nama){
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.tab === nama));
+  document.querySelectorAll('.panelpage').forEach(p => p.classList.toggle('on', p.id === 'page-' + nama));
+  try{ localStorage.setItem('gct_admin_tab', nama); }catch(e){}
+}
+
+/* ================= PEMBAYARAN ================= */
+const KEY_BAYAR = 'gct_pembayaran';
+const BAYAR_DEFAULT = {
+  qris:"", merchant:"M GOZALI SALIM, DIGITAL & KREATIF", nmid:"ID1026545885604",
+  ewallet_no:"085600000279", bank_name:"Bank Mandiri", bank_no:"1020004981236",
+  holder:"M Gozali Salim", wa:"6285600000279"
+};
+let bayar = {...BAYAR_DEFAULT};
+
+function muatBayar(){
+  try{
+    const ls = localStorage.getItem(KEY_BAYAR);
+    if(ls) return {...BAYAR_DEFAULT, ...JSON.parse(ls)};
+  }catch(e){}
+  return {...BAYAR_DEFAULT};
+}
+function isiFormBayar(){
+  b_ewallet.value   = bayar.ewallet_no || '';
+  b_bank_name.value = bayar.bank_name  || '';
+  b_bank_no.value   = bayar.bank_no    || '';
+  b_holder.value    = bayar.holder     || '';
+  b_merchant.value  = bayar.merchant   || '';
+  b_nmid.value      = bayar.nmid       || '';
+  b_wa.value        = bayar.wa         || '';
+  gambarQris();
+  syncBayar();
+}
+function syncBayar(){
+  document.getElementById('qrisMerchantPv').textContent = b_merchant.value || '—';
+  document.getElementById('qrisNmidPv').textContent = b_nmid.value ? ('NMID: ' + b_nmid.value) : '—';
+}
+function gambarQris(){
+  const img = document.getElementById('qrisImg');
+  const none = document.getElementById('qrisNone');
+  if(bayar.qris){ img.src = bayar.qris; img.style.display = 'block'; none.style.display = 'none'; }
+  else { img.style.display = 'none'; none.style.display = 'block'; }
+}
+function simpanBayar(){
+  const wa = (b_wa.value || '').replace(/\D/g, '');
+  if(wa && !wa.startsWith('62')){ toast('Nomor WhatsApp harus diawali 62', false); return; }
+  bayar = {
+    ...bayar,
+    ewallet_no: b_ewallet.value.trim(),
+    bank_name:  b_bank_name.value.trim(),
+    bank_no:    b_bank_no.value.trim(),
+    holder:     b_holder.value.trim(),
+    merchant:   b_merchant.value.trim(),
+    nmid:       b_nmid.value.trim(),
+    wa:         wa,
+  };
+  try{ localStorage.setItem(KEY_BAYAR, JSON.stringify(bayar)); }catch(e){}
+  toast('Data pembayaran disimpan');
+}
+
+/* QRIS: potong jadi kotak -> kecilkan -> hitam putih (file jadi ringan) */
+function onQris(ev){
+  const file = ev.target.files[0]; if(!file) return;
+  const fr = new FileReader();
+  fr.onload = e => {
+    const im = new Image();
+    im.onload = () => {
+      const sisi = Math.min(im.width, im.height);          // potong tengah jadi kotak
+      const sx = (im.width - sisi) / 2, sy = (im.height - sisi) / 2;
+      const N = 480;
+      const cv = document.createElement('canvas'); cv.width = cv.height = N;
+      const ctx = cv.getContext('2d');
+      ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, N, N);
+      ctx.drawImage(im, sx, sy, sisi, sisi, 0, 0, N, N);
+
+      // ambang hitam-putih: QR tetap terbaca, ukuran file jauh lebih kecil
+      const d = ctx.getImageData(0, 0, N, N);
+      for(let i = 0; i < d.data.length; i += 4){
+        const abu = 0.299*d.data[i] + 0.587*d.data[i+1] + 0.114*d.data[i+2];
+        const v = abu > 128 ? 255 : 0;
+        d.data[i] = d.data[i+1] = d.data[i+2] = v; d.data[i+3] = 255;
+      }
+      ctx.putImageData(d, 0, 0);
+
+      bayar.qris = cv.toDataURL('image/png');
+      try{ localStorage.setItem(KEY_BAYAR, JSON.stringify(bayar)); }catch(e){}
+      gambarQris();
+      toast('QRIS diperbarui — jangan lupa unduh & commit');
+    };
+    im.src = e.target.result;
+  };
+  fr.readAsDataURL(file);
+  ev.target.value = '';
+}
+function hapusQris(){
+  if(!confirm('Hapus gambar QRIS?')) return;
+  bayar.qris = '';
+  try{ localStorage.setItem(KEY_BAYAR, JSON.stringify(bayar)); }catch(e){}
+  gambarQris(); toast('QRIS dihapus');
+}
+function unduhBayar(){
+  simpanBayar();
+  unduhFile('pembayaran.json', bayar);
+}
+function imporBayar(ev){
+  bacaJSON(ev, d => {
+    if(Array.isArray(d)) throw 0;
+    bayar = {...BAYAR_DEFAULT, ...d};
+    try{ localStorage.setItem(KEY_BAYAR, JSON.stringify(bayar)); }catch(e){}
+    isiFormBayar(); toast('pembayaran.json diimpor');
+  });
+}
+async function muatBayarServer(senyap){
+  try{
+    const r = await fetch('pembayaran.json', {cache:'no-store'}); if(!r.ok) throw 0;
+    bayar = {...BAYAR_DEFAULT, ...await r.json()};
+    isiFormBayar();
+    if(!senyap){ try{ localStorage.setItem(KEY_BAYAR, JSON.stringify(bayar)); }catch(e){} toast('Dimuat dari server'); }
+  }catch(e){ if(!senyap) toast('Gagal memuat pembayaran.json', false); }
+}
+
+/* ================= EDUKASI ================= */
+const KEY_EDU = 'gct_edukasi';
+const EDU_DEFAULT = [
+  {judul:"Dasar-dasar AI untuk Pemula",level:"Pemula",ringkasan:"Kenalan dengan konsep AI, machine learning, dan cara memakainya sehari-hari.",durasi:"45 mnt",img:"",link:"#"},
+  {judul:"Bikin AI Agent Pertamamu",level:"Menengah",ringkasan:"Langkah praktis merancang chatbot & AI agent tanpa harus jago coding.",durasi:"1,5 jam",img:"",link:"#"},
+  {judul:"AI Automation untuk Bisnis",level:"Lanjut",ringkasan:"Rancang alur otomasi yang menghemat waktu dari lead sampai laporan.",durasi:"2 jam",img:"",link:"#"}
+];
+let edukasi = [], eduEdit = -1, eduImg = "";
+
+function muatEdu(){
+  try{
+    const ls = localStorage.getItem(KEY_EDU);
+    if(ls){ const a = JSON.parse(ls); if(Array.isArray(a)) return a; }
+  }catch(e){}
+  return JSON.parse(JSON.stringify(EDU_DEFAULT));
+}
+function simpanEduLS(){ try{ localStorage.setItem(KEY_EDU, JSON.stringify(edukasi)); }catch(e){} }
+
+function renderEdu(){
+  const box = document.getElementById('elist');
+  document.getElementById('eduCount').textContent = edukasi.length + ' materi';
+  document.getElementById('nEdukasi').textContent = edukasi.length;
+  if(!edukasi.length){ box.innerHTML = '<div class="empty">Belum ada materi. Tambahkan lewat formulir di kiri.</div>'; return; }
+  box.innerHTML = '';
+  edukasi.forEach((m, i) => {
+    const el = document.createElement('div');
+    el.className = 'item';
+    el.innerHTML = `
+      <div class="thumb">${m.img ? `<img src="${esc(m.img)}" alt="">` : '🎓'}</div>
+      <div class="meta">
+        <div class="k">${esc(m.level || '')}</div>
+        <div class="nm">${esc(m.judul || '')}</div>
+        <div class="pr">${esc(m.durasi || '')}</div>
+      </div>
+      <div class="ctrls">
+        <button class="iconbtn" title="Naik" ${i === 0 ? 'disabled' : ''} onclick="geserEdu(${i},-1)">↑</button>
+        <button class="iconbtn" title="Turun" ${i === edukasi.length-1 ? 'disabled' : ''} onclick="geserEdu(${i},1)">↓</button>
+        <button class="iconbtn" title="Edit" onclick="editEdu(${i})">✎</button>
+        <button class="iconbtn del" title="Hapus" onclick="hapusEdu(${i})">🗑</button>
+      </div>`;
+    box.appendChild(el);
+  });
+}
+function geserEdu(i, d){
+  const j = i + d; if(j < 0 || j >= edukasi.length) return;
+  [edukasi[i], edukasi[j]] = [edukasi[j], edukasi[i]];
+  simpanEduLS(); renderEdu();
+}
+function hapusEdu(i){
+  if(!confirm('Hapus materi "' + (edukasi[i].judul || '') + '"?')) return;
+  edukasi.splice(i, 1); simpanEduLS(); renderEdu();
+  if(eduEdit === i) resetEduForm();
+  toast('Materi dihapus');
+}
+function bacaEduForm(){
+  return {
+    judul: e_judul.value.trim(),
+    level: e_level.value,
+    ringkasan: e_ringkasan.value.trim(),
+    durasi: e_durasi.value.trim(),
+    img: eduImg || '',
+    link: e_link.value.trim() || '#',
+  };
+}
+function syncEdu(){
+  const m = bacaEduForm();
+  document.getElementById('ev_lvl').textContent = m.level;
+  document.getElementById('ev_judul').textContent = m.judul || 'Judul Materi';
+  document.getElementById('ev_ring').textContent = m.ringkasan || 'Ringkasan materi akan tampil di sini.';
+  document.getElementById('ev_dur').textContent = m.durasi || '—';
+}
+function resetEduForm(){
+  eduEdit = -1; eduImg = "";
+  e_judul.value = ''; e_ringkasan.value = ''; e_durasi.value = ''; e_link.value = '';
+  e_level.value = 'Pemula';
+  document.getElementById('eduFormTitle').innerHTML = '<span class="tag">BARU</span> Tambah Materi';
+  document.getElementById('eduSaveBtn').textContent = 'Tambah Materi';
+  document.getElementById('eduCancelBtn').style.display = 'none';
+  document.getElementById('eduImgPrev').innerHTML = '🎓';
+  syncEdu();
+}
+function editEdu(i){
+  const m = edukasi[i]; eduEdit = i; eduImg = m.img || '';
+  e_judul.value = m.judul || ''; e_level.value = m.level || 'Pemula';
+  e_ringkasan.value = m.ringkasan || ''; e_durasi.value = m.durasi || '';
+  e_link.value = m.link || '';
+  document.getElementById('eduImgPrev').innerHTML = eduImg ? `<img src="${eduImg}" alt="">` : '🎓';
+  document.getElementById('eduFormTitle').innerHTML = '<span class="tag" style="background:rgba(244,182,62,.18);color:#F4B63E">EDIT</span> Ubah Materi';
+  document.getElementById('eduSaveBtn').textContent = 'Simpan Perubahan';
+  document.getElementById('eduCancelBtn').style.display = 'inline-flex';
+  syncEdu();
+}
+function simpanEdu(){
+  const m = bacaEduForm();
+  if(!m.judul){ toast('Judul wajib diisi', false); return; }
+  if(!m.ringkasan){ toast('Ringkasan wajib diisi', false); return; }
+  if(eduEdit >= 0){ edukasi[eduEdit] = m; toast('Perubahan disimpan'); }
+  else { edukasi.push(m); toast('Materi ditambahkan'); }
+  simpanEduLS(); renderEdu(); resetEduForm();
+}
+function onEduImg(ev){
+  const f = ev.target.files[0]; if(!f) return;
+  kecilkanGambar(f, 480, url => {
+    eduImg = url;
+    document.getElementById('eduImgPrev').innerHTML = `<img src="${url}" alt="">`;
+  });
+  ev.target.value = '';
+}
+function hapusEduImg(){ eduImg = ""; document.getElementById('eduImgPrev').innerHTML = '🎓'; }
+function unduhEdu(){ unduhFile('edukasi.json', edukasi); }
+function imporEdu(ev){
+  bacaJSON(ev, d => {
+    const a = Array.isArray(d) ? d : (d.edukasi || []);
+    if(!Array.isArray(a)) throw 0;
+    edukasi = a; simpanEduLS(); renderEdu(); resetEduForm();
+    toast('edukasi.json diimpor (' + a.length + ' materi)');
+  });
+}
+async function muatEduServer(senyap){
+  try{
+    const r = await fetch('edukasi.json', {cache:'no-store'}); if(!r.ok) throw 0;
+    const d = await r.json(); const a = Array.isArray(d) ? d : (d.edukasi || []);
+    edukasi = a; renderEdu(); resetEduForm();
+    if(!senyap){ simpanEduLS(); toast('Dimuat dari server (' + a.length + ' materi)'); }
+  }catch(e){ if(!senyap) toast('Gagal memuat edukasi.json', false); }
+}
+
+/* ================= UTIL BERSAMA ================= */
+function unduhFile(nama, data){
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = nama; a.click();
+  URL.revokeObjectURL(a.href);
+  toast(nama + ' diunduh — commit ke GitHub untuk publikasi');
+}
+function bacaJSON(ev, cb){
+  const f = ev.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = e => { try{ cb(JSON.parse(e.target.result)); }catch(err){ toast('File tidak valid', false); } };
+  r.readAsText(f); ev.target.value = '';
+}
+function kecilkanGambar(file, maks, cb){
+  const r = new FileReader();
+  r.onload = e => {
+    const im = new Image();
+    im.onload = () => {
+      const sc = Math.min(1, maks / im.width);
+      const w = Math.round(im.width * sc), h = Math.round(im.height * sc);
+      const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      cv.getContext('2d').drawImage(im, 0, 0, w, h);
+      cb(cv.toDataURL('image/jpeg', 0.82));
+    };
+    im.src = e.target.result;
+  };
+  r.readAsDataURL(file);
 }
 
 /* ================= TOAST ================= */
