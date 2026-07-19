@@ -1,5 +1,85 @@
 [
   {
+    "judul": "Kecerdasan Buatan Ubah Relasi Sosial dan Kehidupan Masa Depan",
+    "kategori": "AI",
+    "ringkasan": "Teknologi AI mulai merambah aspek personal, menawarkan solusi hubungan virtual hingga memprediksi perubahan gaya hidup di masa depan.",
+    "tanggal": "2026-07-19",
+    "baca": 3,
+    "img": "",
+    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOc2o2c3M2czJCalQ3dWV0SUtReVpKaktBSllRbXBVbjgtRlhKc0ZvS3lSLUpZLWI1WnJBQnJ0aFhDajdzLXhESjNLQkk2Z2JpblNQWGx0ZjMwbkg1OE5NZDliX2lPX3dDSmxwUlZqOXl5RXRreVQyX2ZuNGRHV1l2eDlGU3pnWDZQcFBlYnppQnJoRldLWk5Ta2dnVnZnN2oyUlBiRWZLeWEzaGc?oc=5",
+    "sumber": "Scientia Indonesia"
+  },
+  {
+    "judul": "Nvidia Buka 15.000 Lowongan Kerja Teknologi di Indonesia",
+    "kategori": "Startup",
+    "ringkasan": "Perusahaan semikonduktor ternama, Nvidia, membuka ribuan peluang kerja baru di Indonesia, fokus pada sektor-sektor teknologi vital.",
+    "tanggal": "2026-07-19",
+    "baca": 2,
+    "img": "",
+    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNUFRORmw3cTFZREU5WHI2OXl4SzJHaE5XZHlUWE16dzh0M1E3Z2VtMWVTSF82T1dXczhUcVhDcG1iVG5nUFNTSHp2eExtWWpSbk85Q0MtSzRsN2ZQM2pkZXBZdXBlMm5mRUd2QnFwajF2LWl4Rnkwd1VQdEFaQ1h3U0pGZnlrWGk2eVlkM0Vxc3M0SHYtdHkyMEpRSHIzS09NdGV1enlHWGRUeHdna1NQVlB6R1dtd2MzckE?oc=5",
+    "sumber": "Listrik Indonesia"
+  },
+  {
+    "judul": "Dana Pensiun Malaysia Rugi Akibat Investasi Startup Teknologi Indonesia",
+    "kategori": "Startup",
+    "ringkasan": "Perdana Menteri Malaysia akan menjelaskan kerugian investasi dana pensiun negara pada startup teknologi Indonesia, eFishery, di parlemen.",
+    "tanggal": "2026-07-19",
+    "baca": 3,
+    "img": "",
+    "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQcHZYS1JkdDBzN3c3MG1FenFwR05XTGFKcThVRVFyb19tdTJDQWVFR04tc3ZJYkFscnNkaVR2MkVsVWdHZy1QdTZLby1UQVpwSGJsT1hkT295azNmbzdldzVOeGJRYUVNVjVMbVJud1JFSUlUQkZ3eVFtTFdJUGFpVEZqM01CTGgtdjlXbkdwWdIBlwFBVV95cUxQTkpYN2V2VGs2Q0IxSjVDeUdSUC1RS3JSZEt2RGdWcnhwby10NVY4OWJqMmxqUTJpeHZPT0dnckxTWEhqdDhWVmlVTU9tSnZvenRQVWQ1cmlZV2pCcEdnbWNiQUlOQlV0NW5LbDJjMU5TSTg4UjZYYXBWZmpuaU9xNmk0ZTUtdE1tTGxIclJ5dkhnN19yR1VR?oc=5",
+    "sumber": "Qoo Media"
+  },
+  {
+    "judul": "OpenAI Prediksi Peran Software Engineer Berubah Drastis Akibat AI",
+    "kategori": "AI",
+    "ringkasan": "OpenAI memprediksi kecerdasan buatan akan mengubah lanskap pekerjaan bagi para insinyur perangkat lunak di masa mendatang.",
+    "tanggal": "2026-07-19",
+    "baca": 3,
+    "img": "",
+    "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdmtRMmFoU1VNcF96VlU5T2pvdXJScnh1eVdwQnV5OV8wMUhWcmxLcHdPQTlZSHE3RWlSa3I3VmxiZHNvQUlBQzlVeFFWdWZYSEplS3Rwb2NNRzd4RW91VnNYbmt0SmVvYkFXZlNTNGY0Z3pNMHJUYlJnLTBGUVRneVh3cHc?oc=5",
+    "sumber": "achmadnurhidayat.id"
+  },
+  {
+    "judul": "Skandal Investasi eFishery: PM Malaysia Jelaskan Kerugian Dana Pensiun",
+    "kategori": "Startup",
+    "ringkasan": "Perdana Menteri Malaysia akan memaparkan kerugian investasi dana pensiun negara pada startup eFishery kepada anggota parlemen.",
+    "tanggal": "2026-07-19",
+    "baca": 3,
+    "img": "",
+    "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNS2xTX3JmN05MbFI4blE2YmNQYmNZb3c3c0lMYWpRdDd0UXF1c0JVaWtjb3EzcW11bHNaMVhkRGh6YjRQdmhpRHZtb2pzZk5PczBGMkMyT0cyTGs5dmZqM2pweUkxWTFBYlBadXp4c2FDWllPMlg0ZmgzVG4xRWtScTlRemsxNnYzOU83Q0NBb0ZzcnA3VXd3cnYyaXczOEpiTTdDUlBlR0t5bXhfTUkwUmRnOXVRZWx0ZG16RWFlREFyS3A1MU81QnRVam8xdw?oc=5",
+    "sumber": "oborkeadilan.com"
+  },
+  {
+    "judul": "Realme Siapkan Transisi ke ColorOS untuk Lima Model Ponsel",
+    "kategori": "Gadget",
+    "ringkasan": "Realme berencana mengadopsi sistem operasi ColorOS pada lima model smartphone mereka mulai tahun 2026.",
+    "tanggal": "2026-07-19",
+    "baca": 2,
+    "img": "",
+    "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNZ0RESkFVOVlyQkRwZENNRTA0d2RMV3pMbUNQdXl5cGJWdWtmTmNCUDFBUUdjZWFudTZ1VTZ3c1JBbzdDVTZjeng0bmdvRmdNZzhtZkVMeHBWeHVmZ05JZzBrX3VLNVJMS01jZl9tVFJkLVJhMkJ3UlVCYWpMVGF1Q280V3l2MDhTc1BJZHg3Y2NzaUMtTGpJSmdMNUZDUQ?oc=5",
+    "sumber": "viv.co.id"
+  },
+  {
+    "judul": "OpenAI: Keahlian Ngoding Saja Tak Cukup untuk Developer Masa Depan",
+    "kategori": "AI",
+    "ringkasan": "OpenAI menilai kemampuan teknis pemrograman saja tidak akan cukup bagi para pengembang di era mendatang.",
+    "tanggal": "2026-07-19",
+    "baca": 2,
+    "img": "",
+    "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQYXVMekNJcmp1dlBfX0hheFduOUlpc0M1alhhSTJQRjlXdkhiellQNlJHWEYyYnlnVTRRZ0Rpa3VvQld6dGlWSVZGdnpGdGZIZThWOG9rclNmanR3UXg2bE1TUXJRQjd1bVJYbF9BU0V1Tmt2SVZvaWlBVEtCMVZSR2xVQWo5LVplRVl2b1VmVFZXRndXS0dqdtIBngFBVV95cUxPa01pNzFLTFVxcFlsblQ1TjktVDhvMGc2b19IRTVqR0xzRGVsaVBsR0FoWU9rRHNROWZRUXhhRDlwRW5oMGdObWk0czE5MGdadXVUenc0TWdpNDI4ZUd4YWlBeklQNXZmMUZtQVk5eEpac2psMXl2aUpJOTAyLVlRSWJ5TXUyZC1SeXp0Qjc0aF9ZTW5GRlNOVU9Mbnc2UQ?oc=5",
+    "sumber": "detikInet"
+  },
+  {
+    "judul": "Xiaomi 17T Pro Meluncur, Andalkan Chip Kencang dan Kamera Leica",
+    "kategori": "Gadget",
+    "ringkasan": "Xiaomi resmi merilis ponsel terbarunya, 17T Pro, yang ditenagai chipset Dimensity 9500 dan sistem kamera Leica.",
+    "tanggal": "2026-07-19",
+    "baca": 2,
+    "img": "",
+    "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQME5ZaWp3Mjd0RXdReVhTbEVGV2w0ZHM2YktiS2R3cWxZWDRjRVdWOTItVDZXaHJZbkI2bERrTktKS3dLRmFybk5BekVEQVYtLTFabktFYThHb3d3djZRTzNsNHF2cEl1N0xVQS1oQUZUdmdFRUxRM29BSnluYXM3NGtZWjdOSWtnVWNXU294TW1MYnRXQ3MycVRaWWxuNFRUZDNabG56ZHltTEoxQzVLRnhaV21HTGtOdFV4dEJDR3RyUE1MSTEyY0VxSXhqQdIB0wFBVV95cUxNNXk0a1d2WEZrelNqNHlFSTJLLWwxOThNNUlZQTVzMFNfTUNlUVVzNUVkX0pGZnFTRXZQY1lTMVgzRUpEVENLb1hrX1hyaFFkSF9ZWF9zdkRFT2xVU2huQVR6S0UzTFVDZU1uUmFRRlZCREFyZmY3TmdoQjNSQ1Q4OFFkUnZ5RzVSbWwtRE1HR1J1VnJpMzg3c2lxalVjbXZzamI0X3hQUWtqMU9neWg1cTUyTF91ZDBNY1ltd2U2SG0yX0MwYUEtLWNWWmpvU2ZuZndV?oc=5",
+    "sumber": "Banjarnegaraku"
+  },
+  {
     "judul": "Netflix Perkuat AI dengan Akuisisi Startup Ben Affleck Seharga Triliunan",
     "kategori": "AI",
     "ringkasan": "Netflix dilaporkan mengakuisisi perusahaan kecerdasan buatan milik Ben Affleck senilai Rp 9,2 triliun untuk memperkuat layanannya.",
@@ -158,85 +238,5 @@
     "img": "",
     "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOTXJvRVR4OWFzaktDQzhIaHZ3THgzNDZXbmp3bjY3R2hzaWM4QklvSUQ3b1ZiYjNmNHV2NEUwUnAyYVZxVUdvS2RuRFo2QnFfX1dQRFlRM0FUd0lhVjVaOUtiZk1Nb3U2Z0NmQ1Y0THVEU1ZtR2VyOXlnaFZJWlc0Wm1zS2c2aWc?oc=5",
     "sumber": "Telset.id"
-  },
-  {
-    "judul": "Ombudsman Minta Posko Pengaduan Pasca Kebocoran Data Bansos Jateng",
-    "kategori": "Keamanan",
-    "ringkasan": "Menyusul dugaan peretasan data penerima Bantuan Sosial di Jawa Tengah, Ombudsman mendesak pemerintah membuka posko pengaduan.",
-    "tanggal": "2026-07-18",
-    "baca": 3,
-    "img": "",
-    "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQeG1BenVxcFROOHdKMnVMWl9mZ2dpYnV5NGdVZjV0WlE2elRCbi1KVXlvbkdMXzRHQ0U3c3h1MUpqVUs4VmVLdjlEaXRsQzBXbmRzMTdrbDB3V1UyMW14N01od3VpRndaUWRHN0g2OUw4VGhUTWdyZkFWWDhlNnA2RVY0UUJuYXdkck92RHRKdUxpcFNvNndVbXJVcnY?oc=5",
-    "sumber": "Samudrafakta"
-  },
-  {
-    "judul": "Indonesia Jajaki Transfer Teknologi AI dengan ByteDance dan Huawei",
-    "kategori": "AI",
-    "ringkasan": "Menteri Koordinator Bidang Perekonomian bertemu perwakilan ByteDance dan Huawei untuk menjajaki potensi transfer teknologi kecerdasan buatan.",
-    "tanggal": "2026-07-18",
-    "baca": 3,
-    "img": "",
-    "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPcGJSS1NVM1pfcHhZOEptY055ak41VEVYbFhsQTRQVDRjN2VMazdBeFMwOHRQZ182M0NwMkc1OHRSNmZvcFZTZjliRXJMSUxfUVIwYlIxYlhYbVFTdjktOFpGRkRPamZhX0hONGo4WkpoMDBud1RyRlVnTjdlTEpTU0Zzc3RGM0VTZGZkdktpYk15djR6cVJJdTJLU3E3dEloVXVCbDdCdEVkbEczNVp3QkNZTHUyM3NjWHBFcVl0U19KSFBrbmfSAcsBQVVfeXFMTUxEbnc2Qk5ucFhpTzEwMHR3Z1BsTDBlc0JmNXdLVWhGM01pQ0RBTWFCY05RaUZNakRMaWw3RDRTSkFIaHo5ejBISl9sTUVWTFYwRXh2QlhkbUMwN281TEk3TUp3RUVuME8yR1Vlc1hDckZVUU5qSFc3UXBxaUhyUHpmUW5tRHUteko2Vnd5NTUteTd5eHR4ajJ3YWRXWmczNGplSDRLa3BnVTFfTlFDQzUyeUREMlRJRXRNWENjV1lWY0JqSnlIOHlMMjg?oc=5",
-    "sumber": "CNN Indonesia"
-  },
-  {
-    "judul": "Apple Lampaui Nvidia, Jadi Perusahaan Termahal Dunia",
-    "kategori": "Startup",
-    "ringkasan": "Apple berhasil menggeser Nvidia dan kini dinobatkan sebagai perusahaan dengan valuasi pasar tertinggi di dunia.",
-    "tanggal": "2026-07-18",
-    "baca": 2,
-    "img": "",
-    "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPZm53VC12R01wZFJOMVZUVm9CQjhVcEREN3NvbE9jU2JHVDk1SllHYnMzbDNnNXJnT1dXMGlncHBkUTFoaER6U3VuWFBxMWpZT2NCQmtsZ1lnS05WWHVocG1kVVFrdFNwdnl3UWtDQ0xhN2VnR293SXMzVWl0Tkh4QmU0Rmh5RVlZNDJsYmQweElBX2ZUMkxWaGk0SHJJSzRYQS0tRTJjMXFKQmRtZU9icUpsaTB1RFY2b2VVS3oyNmw3cm1XVkHSAcsBQVVfeXFMUDVqMjJNNUVVbEwtQUNFVHBnYnljSDU1UXFjVm9XMmNUOTZydzVkZTVINEU4aTZJX3dIYjEyWEh6SmNjSU1CdlRrWjlmWGl3T2tIVUIwamFlZEZZOWtmTXNBVDhxV3NFWkV0VWtpOHZaZ1pFVE5PazlfbVRMWWxybjlUcmtkclBrb2dQUDhROHhtVnBMVjA3QlR6R0RqcVptTmJqZ2daaVpWWDJGaEJnUnUwWEFwVmhidjJmeHN3SFFySkl6WGVzVXJmMjQ?oc=5",
-    "sumber": "CNBC Indonesia"
-  },
-  {
-    "judul": "Siswa SD Boyolali Raih Penghargaan NASA Berkat AI dan Coding",
-    "kategori": "AI",
-    "ringkasan": "Seorang siswa sekolah dasar asal Boyolali meraih penghargaan dari NASA berkat kemampuannya memanfaatkan kecerdasan buatan dan coding.",
-    "tanggal": "2026-07-18",
-    "baca": 4,
-    "img": "",
-    "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQYlFDZkhFekNGRGZzMW5RekZ1d3pETG81bzdJUnRfREJJZDNrR3BSekhDaS1odW1ubk15UF90dVpYUTJrTE83dy1peHgwQXpwY0hhc0tIS2ZaMWhORkQ1WEhXMm9JT2NrV2NSSTdIM2I1SkQzSHE4NDA5OXo2MVVLdDFucFp6ZHhhZ1N0Vk9LLXdDZmdaRXdEZThhS2E5NkhycjllUmJvd3VaUk5JbVU4ZzAzTl9qTXVXRFRfU1VwVzVRZFpUUzBBOWdwMnR5NUJXcEZMZ1JSeHlFSVhvQzZyT05aOUI2Nkg3aVh1VUNBamtxLUNQ?oc=5",
-    "sumber": "Jawa Pos"
-  },
-  {
-    "judul": "Ancaman Deepfake: Kebenaran Terancam di Era Digital",
-    "kategori": "AI",
-    "ringkasan": "Teknologi deepfake menimbulkan tantangan baru terhadap keaslian bukti dan kebenaran informasi di ruang digital.",
-    "tanggal": "2026-07-18",
-    "baca": 3,
-    "img": "",
-    "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPN0pYeUQzMHdsbHdlZkFsNWd0WHN2dGdQdGFzWnpOYTFZMzItbWRsZTloYWc1VE95cTR3MWtQRWdsUVNXc3dHNmhkVUVnRFFlOURXTFFtbEVCMkRWRHJiNW90M3YzaUdjZUpzREY0cjNpZG5hZEx6UEtmWEp2a2IyTEhzalVsNHRIM2JXOHdFWmVGZUl0U0Z6TlZsOFY1LVZjYmFn?oc=5",
-    "sumber": "berandasulsel.com"
-  },
-  {
-    "judul": "Perbandingan Ponsel Gaming Terbaru 2026: Mana Paling Unggul?",
-    "kategori": "Gadget",
-    "ringkasan": "Ulasan mengenai ponsel gaming kelas atas yang dirilis pada tahun 2026, membantu konsumen memilih perangkat terbaik.",
-    "tanggal": "2026-07-18",
-    "baca": 4,
-    "img": "",
-    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNRFFmZGJOak52aFFlNHVqVTI0cUo5SXBNTFEyUkM4WXVpU2pWN0NEOHVRZnRIU3VOUDhmVW42MEdYb1h6QlUwbjNCZ0xXR1Zzd3ZpTWpyM2I0OUtYVUdXVndmWTJjUm1kemhvMlJmbEQ5azVuVC1QT0JBXy14eU9kTm9xQXRnQXBVRGE1VGV3MDVaNF9aVTU4dENnTFVVWGV5b0VOMmIwR1RIMlpUaWZhUTR1Zw?oc=5",
-    "sumber": "Medcom.id"
-  },
-  {
-    "judul": "Dukungan Ekosistem Digital Indonesia dari Menteri Ekraf dan Braze",
-    "kategori": "Startup",
-    "ringkasan": "Menteri Ekonomi Kreatif mendukung upaya Braze dalam mengembangkan ekosistem digital yang lebih kuat di Indonesia.",
-    "tanggal": "2026-07-18",
-    "baca": 3,
-    "img": "",
-    "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNdVNjdGxVZHRIRGR3Qzg3LVRVUG9IZnNfMy1wdXNtMGgyNWg5d1lidy1sWVAzMXlqSkFPUDJiMXhSS0xGaEEtZklIeG53YnBOemNjaGNEb1Y1N3ZzTVNpX0Fac3dIZmlESUd3UlVLQW90MXhFSEZpN1BULVpBb1I5WHduUmE2ZkZObXpGbGtxRkpDS2JRN1Z4MG1fdHQ2S2xXemRrek5kOA?oc=5",
-    "sumber": "Gerbang Patriot"
-  },
-  {
-    "judul": "Pergeseran Industri: Dari Sumber Daya Alam ke Teknologi Maju",
-    "kategori": "Startup",
-    "ringkasan": "Indonesia berupaya bertransformasi dari industri berbasis sumber daya alam menuju sektor teknologi yang lebih canggih.",
-    "tanggal": "2026-07-18",
-    "baca": 3,
-    "img": "",
-    "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOdFJpVURFOFk0T21RMTBIS0xFVUs0VXgxck5ObVNPeG9QZDIwaHNnaWVnWkZDR0VTNlZ0YVNWVGw1OHJsRFBVd0Q5Z2VwazJXclZEc3FWUVJDc0Y4RENFbW9PbFo5WUxxS010Z3luNVZNS1JLR1U5WXBGcVY2cWkxQ1hTX0ZCR2xqX1hIOWN3TkNIWlhGVU5xdVRn?oc=5",
-    "sumber": "Mediasulsel.com"
   }
 ]
